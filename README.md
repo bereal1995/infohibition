@@ -21,7 +21,8 @@ pnpm install
 - React: SPA를 통해 사용자 경험을 개선하기 위해 사용
 - Next.js: SSR을 통해 SEO 최적화 및 빠른 페이지 로딩을 위해 사용
 - TypeScript: 타입 안정성을 위해 사용
-- Styled Components: CSS-in-JS를 위해 사용
+- tailwindcss: CSS를 효율적으로 관리하기 위해 사용
+- Emotion: CSS-in-JS를 위해 사용
 - Storybook: 컴포넌트 개발을 위해 사용
 - Jest: 테스트를 위해 사용
 - Cypress: E2E 테스트를 위해 사용
