@@ -10,8 +10,14 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
-    '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^@/img/(.*)$': '<rootDir>/src/img/$1',
+    '^@/providers/(.*)$': '<rootDir>/src/providers/$1',
+    '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@/constants/(.*)$': '<rootDir>/src/constants/$1',
+    '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
 };
