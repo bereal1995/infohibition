@@ -16,7 +16,7 @@ function ThemeButton({}: Props) {
   };
 
   return (
-    <StyledButton onClick={onClick}>
+    <StyledButton onClick={onClick} id="ih-theme-button">
       {theme === 'dark' ? <Dark /> : <Light />}
     </StyledButton>
   );

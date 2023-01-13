@@ -11,7 +11,7 @@ const ThemeContext = React.createContext({
 });
 
 export const MEDIA = '(prefers-color-scheme: dark)';
-export const STORAGE_KEY = 'ih_theme';
+export const THEME_STORAGE_KEY = 'ih_theme';
 
 export const ThemeProvider = ({ children }: Props) => {
   const [theme, setThemeState] = useState('system');
@@ -25,11 +25,11 @@ export const ThemeProvider = ({ children }: Props) => {
 
   const setThemeMode = (theme: string) => {
     setTheme(theme);
-    localStorage.setItem(STORAGE_KEY, theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem(STORAGE_KEY);
+    const localTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
     const osTheme = prefersDarkMode ? 'dark' : 'light';
 
     if (isInitRender.current) {

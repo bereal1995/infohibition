@@ -1,4 +1,4 @@
-import { MEDIA, STORAGE_KEY } from '@/providers/ThemeProvider';
+import { MEDIA, THEME_STORAGE_KEY } from '@/providers/ThemeProvider';
 import { Html, Head, Main, NextScript } from 'next/document';
 
 const createMarkup = (htmlValue: string) => {
@@ -8,7 +8,7 @@ const createMarkup = (htmlValue: string) => {
 const ThemeScript = () => {
   const setTheme = `
     const prefersDarkMode = window.matchMedia("${MEDIA}").matches;
-    const localTheme = localStorage.getItem("${STORAGE_KEY}");
+    const localTheme = localStorage.getItem("${THEME_STORAGE_KEY}");
     if (localTheme) {
       document.body.setAttribute('data-mode', localTheme);
     } else {
