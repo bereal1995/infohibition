@@ -7,8 +7,8 @@ const createMarkup = (htmlValue: string) => {
 
 const ThemeScript = () => {
   const setTheme = `
-    const prefersDarkMode = window.matchMedia(${MEDIA}).matches;
-    const localTheme = localStorage.getItem(${STORAGE_KEY});
+    const prefersDarkMode = window.matchMedia("${MEDIA}").matches;
+    const localTheme = localStorage.getItem("${STORAGE_KEY}");
     if (localTheme) {
       document.body.setAttribute('data-mode', localTheme);
     } else {
