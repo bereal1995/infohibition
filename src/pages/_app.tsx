@@ -2,7 +2,6 @@ import type { AppProps } from 'next/app';
 import { Noto_Sans_KR } from '@next/font/google';
 
 import '@/styles/globals.css';
-import Header from '@/components/header';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import GlobalStyle from '@/styles/GlobalStyle';
 
@@ -23,7 +22,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </style>
       <ThemeProvider>
         <GlobalStyle />
-        <Header />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
