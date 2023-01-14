@@ -17,8 +17,10 @@ function CardItem({ item }: Props) {
         </PerformanceType>
         <Title>칼라바 쇼</Title>
         <Description>
-          <span>2023.01.05 ~ 2023.01.06</span>
-          <span>폴리미디어 씨어터 (서울 동작구)</span>
+          <span>
+            2023.01.05 ~ 2023.01.06 <br />
+            폴리미디어 씨어터 (서울 동작구)
+          </span>
         </Description>
       </Content>
     </Container>
@@ -52,7 +54,7 @@ const PerformanceType = styled.div`
 `;
 
 const Title = styled.div`
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   font-size: 18px;
   line-height: 1;
   font-weight: 600;
@@ -61,7 +63,9 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 12px;
+  line-height: 1.2;
   color: #767676;
+  white-space: pre-wrap;
 `;
 
 export default CardItem;
