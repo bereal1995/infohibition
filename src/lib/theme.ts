@@ -32,9 +32,9 @@ const colors: ThemeColors = {
   on_primary: '#FFFFFF',
   on_secondary: '#000000',
   on_background: '#000000',
-  on_background_elevated: '#000000',
+  on_background_elevated: '#e5e5e5',
   on_surface: '#000000',
-  on_surface_elevated: '#000000',
+  on_surface_elevated: '#757575',
   on_error: '#FFFFFF',
 };
 
@@ -51,9 +51,9 @@ const darkColors: ThemeColors = {
   on_primary: '#000000',
   on_secondary: '#000000',
   on_background: '#FFFFFF',
-  on_background_elevated: '#FFFFFF',
+  on_background_elevated: '#5e5e5e',
   on_surface: '#FFFFFF',
-  on_surface_elevated: '#FFFFFF',
+  on_surface_elevated: '#b1b1b1',
   on_error: '#000000',
 };
 
