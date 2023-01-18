@@ -1,3 +1,21 @@
+export type PerformanceType = 'period' | 'area' | 'realm';
+export interface PerformanceParams {
+  from: string;
+  to: string;
+  cPage: any;
+  rows: number;
+  place: string;
+  gpsxfrom: string | number;
+  gpsyfrom: string | number;
+  gpsxto: string | number;
+  gpsyto: string | number;
+  keyword: string;
+  /**
+   * 1: 등록일, 2: 공연명, 3: 지역
+   */
+  sortStdr: 1 | 2 | 3;
+}
+
 export interface PerformanceDisplay {
   totalCount: string[];
   cPage: string[];

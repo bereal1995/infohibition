@@ -1,4 +1,4 @@
-import { PerformanceDisplay } from '@/types/perfor';
+import { PerformanceDisplay } from '@/types/items';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import xml2js from 'xml2js';
 

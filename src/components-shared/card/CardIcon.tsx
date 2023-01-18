@@ -9,7 +9,7 @@ import Space from '@/img/space_icon.svg';
 import Theater from '@/img/theater_icon.svg';
 import Video from '@/img/video_icon.svg';
 import { themeVar } from '@/lib/theme';
-import { RealmName } from '@/types/perfor';
+import { RealmName } from '@/types/items';
 import styled from '@emotion/styled';
 import React from 'react';
 interface Props {
@@ -30,7 +30,7 @@ function CardIcon({ type }: Props) {
     ['기타']: Etc,
   };
 
-  const IconEl = Icon[type];
+  const IconEl = Icon[type] ?? Etc;
 
   return (
     <Container>

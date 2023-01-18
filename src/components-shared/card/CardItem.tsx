@@ -1,6 +1,6 @@
 import CardIcon from 'src/components-shared/card/CardIcon';
 import { themeVar } from '@/lib/theme';
-import { PerforItem } from '@/types/perfor';
+import { PerforItem } from '@/types/items';
 import styled from '@emotion/styled';
 
 interface Props {
