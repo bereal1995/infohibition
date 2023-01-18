@@ -1,4 +1,4 @@
-import CardList from '@/components/card/CardList';
+import CardList from 'src/components-shared/card/CardList';
 import { PerformanceDisplay } from '@/types/perfor';
 import styled from '@emotion/styled';
 

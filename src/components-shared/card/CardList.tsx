@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import CardItem from '@/components/card/CardItem';
+import CardItem from 'src/components-shared/card/CardItem';
 import { PerforItem } from '@/types/perfor';
 
 interface Props {
@@ -8,7 +8,6 @@ interface Props {
 }
 
 function CardList({ items }: Props) {
-  console.log('items', items);
   if (!items) return <Container>리스트가 없습니다</Container>;
   return (
     <Container>

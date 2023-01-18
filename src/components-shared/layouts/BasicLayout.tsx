@@ -1,10 +1,10 @@
-import Header from '@/components/header';
-import FullHeightPage from '@/components/system/FullHeightPage';
+import Header from 'src/components-shared/header';
+import FullHeightPage from 'src/components-shared/system/FullHeightPage';
 import styled from '@emotion/styled';
 import MenuIcon from '@/img/header_menu.svg';
 import SearchIcon from '@/img/search.svg';
-import Button from '@/components/buttons';
-import ThemeButton from '@/components/buttons/ThemeButton';
+import Button from 'src/components-shared/buttons';
+import ThemeButton from 'src/components-shared/buttons/ThemeButton';
 
 interface Props {
   headerLeft?: React.ReactNode;

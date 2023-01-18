@@ -1,4 +1,4 @@
-import CardIcon from '@/components/card/CardIcon';
+import CardIcon from 'src/components-shared/card/CardIcon';
 import { themeVar } from '@/lib/theme';
 import { PerforItem } from '@/types/perfor';
 import styled from '@emotion/styled';
@@ -11,6 +11,7 @@ function CardItem({ item }: Props) {
   return (
     <Container>
       <Thumbnail>
+        {/* TODO: 이미지 최적화 필요 */}
         <img src={item.thumbnail[0]} />
       </Thumbnail>
       <Content>

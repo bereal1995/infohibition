@@ -1,4 +1,4 @@
-import Button from '@/components/buttons';
+import Button from 'src/components-shared/buttons';
 import { useTheme } from '@/providers/ThemeProvider';
 
 import Dark from '@/img/dark.svg';
