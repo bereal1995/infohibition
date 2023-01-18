@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@/pages/*": ["src/pages/*"],
-      "@/components/*": ["src/components/*"],
+      "@/components/*": ["src/components-shared/*"],
       "@/styles/*": ["src/styles/*"],
       "@/img/*": ["src/assets/img/*"],
       "@/providers/*": ["src/providers/*"],
@@ -25,7 +25,7 @@
       "@/constants/*": ["src/constants/*"],
       "@/lib/*": ["src/lib/*"],
       "@/types/*": ["src/types/*"],
-      "@/api/*": ["src/api/*"],
+      "@/api/*": ["src/api/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

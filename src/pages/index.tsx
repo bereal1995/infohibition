@@ -1,32 +1,27 @@
-import xml2js from 'xml2js';
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
 
-import { getPerformanceDisplay } from '@/api/performance';
-import HomeContainer from '@/components/home';
-import BasicLayout from '@/components/layouts/BasicLayout';
-import { PerformanceDisplay } from '@/types/perfor';
+import HomeContainer from 'src/components-pages/home';
+import BasicLayout from 'src/components-shared/layouts/BasicLayout';
+import { getItems } from '@/api/items';
 
-interface Props {
-  performanceData: PerformanceDisplay;
-}
+export default function Home() {
+  const { data } = useQuery(['items'], () => getItems());
 
-export default function Home({ performanceData }: Props) {
   return (
     <BasicLayout>
-      <HomeContainer data={performanceData} />
+      <HomeContainer data={data} />
     </BasicLayout>
   );
 }
 
 export const getServerSideProps = async () => {
-  const xmlData = await getPerformanceDisplay();
-  let data;
-  xml2js.parseString(xmlData, (err, result) => {
-    data = result?.response?.msgBody[0] as PerformanceDisplay;
-  });
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(['items'], () => getItems());
 
   return {
     props: {
-      performanceData: data,
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
     },
   };
 };

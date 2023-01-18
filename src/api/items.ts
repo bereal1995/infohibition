@@ -20,7 +20,7 @@ interface PerformanceParams {
   sortStdr: 1 | 2 | 3;
 }
 
-export async function getPerformanceDisplay(
+export const getItems = async (
   type: PerformanceType = 'period',
   params: PerformanceParams = {
     from: moment().subtract(6, 'month').format('YYYYMMDD'),
@@ -35,12 +35,13 @@ export async function getPerformanceDisplay(
     keyword: '',
     sortStdr: 1,
   }
-) {
-  const result = await client.get(`/${type}`, {
+) => {
+  const result = await client.get(`/items`, {
     params: {
       ServiceKey: SERVICE_KEY,
+      type,
       ...params,
     },
   });
   return result.data;
-}
+};
