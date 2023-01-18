@@ -15,7 +15,7 @@ function CardItem({ item }: Props) {
       </Thumbnail>
       <Content>
         <PerformanceType>
-          <CardIcon type="theater" />
+          <CardIcon type={item.realmName[0]} />
           {item.realmName[0]}
         </PerformanceType>
         <Title dangerouslySetInnerHTML={{ __html: item.title[0] }} />

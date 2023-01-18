@@ -1,6 +1,7 @@
+import styled from '@emotion/styled';
+
 import CardItem from '@/components/card/CardItem';
 import { PerforItem } from '@/types/perfor';
-import styled from '@emotion/styled';
 
 interface Props {
   items: PerforItem[];
@@ -8,7 +9,7 @@ interface Props {
 
 function CardList({ items }: Props) {
   console.log('items', items);
-  if (!items) return '리스트가 없습니다';
+  if (!items) return <Container>리스트가 없습니다</Container>;
   return (
     <Container>
       {items.map((item) => (

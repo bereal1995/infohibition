@@ -19,9 +19,21 @@ export interface PerforItem {
   startDate: string[];
   endDate: string[];
   place: string[];
-  realmName: string[];
+  realmName: RealmName[];
   area: string[];
   thumbnail: string[];
   gpsX: string[];
   gpsY: string[];
 }
+
+export type RealmName =
+  | '건축'
+  | '문화정책'
+  | '무용'
+  | '기타'
+  | '미술'
+  | '문학'
+  | '음악'
+  | '축제문화공간'
+  | '연극'
+  | '영상';

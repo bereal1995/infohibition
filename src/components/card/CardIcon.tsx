@@ -9,37 +9,25 @@ import Space from '@/img/space_icon.svg';
 import Theater from '@/img/theater_icon.svg';
 import Video from '@/img/video_icon.svg';
 import { themeVar } from '@/lib/theme';
+import { RealmName } from '@/types/perfor';
 import styled from '@emotion/styled';
 import React from 'react';
-
-type IconType =
-  | 'construct'
-  | 'culture'
-  | 'dancing'
-  | 'etc'
-  | 'festival'
-  | 'literature'
-  | 'music'
-  | 'space'
-  | 'theater'
-  | 'video';
-
 interface Props {
-  type: IconType;
+  type: RealmName;
 }
 
 function CardIcon({ type }: Props) {
-  const Icon: Record<IconType, any> = {
-    construct: Construct,
-    culture: Culture,
-    dancing: Dancing,
-    etc: Etc,
-    festival: Festival,
-    literature: Literature,
-    music: Music,
-    space: Space,
-    theater: Theater,
-    video: Video,
+  const Icon: Record<RealmName, any> = {
+    ['연극']: Theater,
+    ['음악']: Music,
+    ['무용']: Dancing,
+    ['미술']: Culture,
+    ['건축']: Construct,
+    ['영상']: Video,
+    ['문학']: Literature,
+    ['문화정책']: Festival,
+    ['축제문화공간']: Space,
+    ['기타']: Etc,
   };
 
   const IconEl = Icon[type];
