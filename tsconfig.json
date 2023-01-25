@@ -17,13 +17,14 @@
     "baseUrl": ".",
     "paths": {
       "@/pages/*": ["src/pages/*"],
-      "@/components/*": ["src/components-shared/*"],
+      "@/components-pages/*": ["src/components-pages/*"],
+      "@/components-shared/*": ["src/components-shared/*"],
       "@/styles/*": ["src/styles/*"],
       "@/img/*": ["src/assets/img/*"],
       "@/providers/*": ["src/providers/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/constants/*": ["src/constants/*"],
-      "@/lib/*": ["src/lib/*"],
+      "@/utils/*": ["src/utils/*"],
       "@/types/*": ["src/types/*"],
       "@/api/*": ["src/api/*"]
     }

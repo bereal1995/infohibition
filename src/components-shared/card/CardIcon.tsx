@@ -8,7 +8,7 @@ import Music from '@/img/music_icon.svg';
 import Space from '@/img/space_icon.svg';
 import Theater from '@/img/theater_icon.svg';
 import Video from '@/img/video_icon.svg';
-import { themeVar } from '@/lib/theme';
+import { themeVar } from 'src/utils/theme';
 import { RealmName } from '@/types/items';
 import styled from '@emotion/styled';
 import React from 'react';
