@@ -2,14 +2,18 @@ import CardIcon from 'src/components-shared/card/CardIcon';
 import { themeVar } from 'src/utils/theme';
 import { PerforItem } from '@/types/items';
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 interface Props {
   item: PerforItem;
+  onClick?: () => void;
 }
 
-function CardItem({ item }: Props) {
+function CardItem({ item, onClick }: Props) {
+  const href = `/items/${item.seq[0]}`;
+
   return (
-    <Container>
+    <Container href={href}>
       <Thumbnail>
         {/* TODO: 이미지 최적화 필요 */}
         <img src={item.thumbnail[0]} />
@@ -31,7 +35,7 @@ function CardItem({ item }: Props) {
   );
 }
 
-const Container = styled.div`
+const Container = styled(Link)`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;

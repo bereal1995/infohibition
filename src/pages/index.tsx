@@ -1,14 +1,14 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 
-import HomeContainer from 'src/components-pages/home';
-import BasicLayout from 'src/components-shared/layouts/BasicLayout';
 import { getItems } from '@/api/items';
+import TabLayout from '@/components-shared/layouts';
+import HomeContainer from '@/components-pages/home';
 
 export default function Home() {
   return (
-    <BasicLayout>
+    <TabLayout>
       <HomeContainer />
-    </BasicLayout>
+    </TabLayout>
   );
 }
 
