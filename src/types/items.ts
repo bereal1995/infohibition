@@ -55,3 +55,29 @@ export type RealmName =
   | '축제문화공간'
   | '연극'
   | '영상';
+
+interface PerforInfo {
+  area: string[];
+  contents1: string[];
+  contents2: string[];
+  endDate: string[];
+  gpsX: string[];
+  gpsY: string[];
+  imgUrl: string[];
+  phone: string[];
+  place: string[];
+  placeAddr: string[];
+  placeSeq: string[];
+  placeUrl: string[];
+  price: string[];
+  realmName: RealmName[];
+  seq: string[];
+  startDate: string[];
+  subTitle: string[];
+  title: string[];
+  url: string[];
+}
+export interface PerforInfoItem {
+  seq: string[];
+  perforInfo: PerforInfo[];
+}

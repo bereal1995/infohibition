@@ -1,7 +1,11 @@
 import client from '@/api/client';
 import moment from 'moment';
 
-import { PerformanceParams, PerformanceType } from '@/types/items';
+import {
+  PerforInfoItem,
+  PerformanceParams,
+  PerformanceType,
+} from '@/types/items';
 
 const SERVICE_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -27,6 +31,16 @@ export const getItems = async (
       ServiceKey: SERVICE_KEY,
       type,
       ...params,
+    },
+  });
+  return result.data;
+};
+
+export const getItem = async (seq: string) => {
+  const result = await client.get<PerforInfoItem>(`/item`, {
+    params: {
+      ServiceKey: SERVICE_KEY,
+      seq,
     },
   });
   return result.data;

@@ -1,5 +1,3 @@
-import { themeVar } from '@/utils/theme';
-import styled from '@emotion/styled';
 import { ButtonHTMLAttributes, forwardRef, Ref } from 'react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,7 +9,7 @@ const Button = forwardRef(
     const { fullWidth = false, children, ...rest } = props;
 
     return (
-      <StyledButton
+      <button
         ref={forwardRef}
         className={`flex items-center justify-center ${
           fullWidth ? 'w-full' : ''
@@ -19,24 +17,11 @@ const Button = forwardRef(
         {...rest}
       >
         <span>{children}</span>
-      </StyledButton>
+      </button>
     );
   }
 );
 
 Button.displayName = 'Button';
-
-const StyledButton = styled.button`
-  padding: 16px;
-  background: ${themeVar.primary};
-  border-radius: 5px;
-  transition: opacity 0.2s linear;
-  span {
-    color: ${themeVar.on_background};
-  }
-  &:hover {
-    opacity: 0.8;
-  }
-`;
 
 export default Button;
