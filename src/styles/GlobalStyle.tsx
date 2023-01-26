@@ -1,4 +1,4 @@
-import { themeCss, themeVar } from 'src/utils/theme';
+import { themeCss, themeVar } from '@/utils/theme';
 import facepaint from 'facepaint';
 
 const breakpoints = [576, 768, 992, 1200];

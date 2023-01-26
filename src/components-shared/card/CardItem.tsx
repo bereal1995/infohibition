@@ -1,5 +1,5 @@
 import CardIcon from 'src/components-shared/card/CardIcon';
-import { themeVar } from 'src/utils/theme';
+import { themeVar } from '@/utils/theme';
 import { PerforItem } from '@/types/items';
 import styled from '@emotion/styled';
 import Link from 'next/link';
