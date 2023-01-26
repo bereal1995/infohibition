@@ -63,7 +63,6 @@ const Thumb = styled.div`
   width: 100%;
   height: 190px;
   margin-bottom: 14px;
-  background-color: ${themeVar.on_background};
   img {
     width: 100%;
     height: 100%;
@@ -105,7 +104,7 @@ const StyledLink = styled(Link)`
   margin-left: 8px;
   border-radius: 5px;
   background: ${themeVar.primary};
-  color: ${themeVar.on_background};
+  color: #fff;
   transition: opacity 0.2s linear;
   white-space: nowrap;
   &:hover {

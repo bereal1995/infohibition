@@ -24,7 +24,7 @@ const colors: ThemeColors = {
   primary_variant: '#3700B3',
   secondary: '#03DAC6',
   secondary_variant: '#018786',
-  background: '#FFFFFF',
+  background: '#F5F5F5',
   background_elevated: '#F5F5F5',
   surface: '#FFFFFF',
   surface_elevated: '#F5F5F5',
