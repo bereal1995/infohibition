@@ -1,60 +1,69 @@
 interface ThemeColors {
   primary: string;
+  on_primary: string;
   primary_variant: string;
   secondary: string;
+  on_secondary: string;
   secondary_variant: string;
   background: string;
-  background_elevated: string;
-  surface: string;
-  surface_elevated: string;
-  error: string;
-  on_primary: string;
-  on_secondary: string;
   on_background: string;
+  background_elevated: string;
   on_background_elevated: string;
+  surface: string;
   on_surface: string;
+  surface_elevated: string;
   on_surface_elevated: string;
+  error: string;
   on_error: string;
+  highlight: string;
+  outline: string;
+  sub_text: string;
 }
 
 type ThemeColorsKey = keyof ThemeColors;
 
 const colors: ThemeColors = {
-  primary: '#6200EE',
-  primary_variant: '#3700B3',
-  secondary: '#03DAC6',
-  secondary_variant: '#018786',
-  background: '#F5F5F5',
-  background_elevated: '#F5F5F5',
-  surface: '#FFFFFF',
-  surface_elevated: '#F5F5F5',
-  error: '#B00020',
+  primary: '#223A5E',
   on_primary: '#FFFFFF',
-  on_secondary: '#000000',
+  primary_variant: '#97BAEA',
+  secondary: '#144955',
+  on_secondary: '#FFFFFF',
+  secondary_variant: '#A9EDFF',
+  background: '#F7F8F9',
   on_background: '#000000',
+  background_elevated: '#F5F5F5',
   on_background_elevated: '#e5e5e5',
+  surface: '#F7F8F9',
   on_surface: '#000000',
-  on_surface_elevated: '#757575',
+  surface_elevated: '#EFF1F3',
+  on_surface_elevated: '#000000',
+  error: '#B00020',
   on_error: '#FFFFFF',
+  highlight: '#BCBCBC',
+  outline: '#4D4D4D',
+  sub_text: '#495057',
 };
 
 const darkColors: ThemeColors = {
-  primary: '#BB86FC',
-  primary_variant: '#3700B3',
-  secondary: '#03DAC6',
-  secondary_variant: '#03DAC6',
-  background: '#121212',
-  background_elevated: '#121212',
-  surface: '#121212',
-  surface_elevated: '#121212',
-  error: '#CF6679',
-  on_primary: '#000000',
-  on_secondary: '#000000',
+  primary: '#748BAC',
+  on_primary: '#FFFFFF',
+  primary_variant: '#1B2E4B',
+  secondary: '#539EAF',
+  on_secondary: '#FFFFFF',
+  secondary_variant: '#004E5D',
+  background: '#16181A',
   on_background: '#FFFFFF',
-  on_background_elevated: '#5e5e5e',
+  background_elevated: '#16181A',
+  on_background_elevated: '#FFFFFF',
+  surface: '#16181A',
   on_surface: '#FFFFFF',
-  on_surface_elevated: '#b1b1b1',
+  surface_elevated: '#16181A',
+  on_surface_elevated: '#FFFFFF',
+  error: '#CF6679',
   on_error: '#000000',
+  highlight: '#CCCCCC',
+  outline: '#B3B3B3',
+  sub_text: '#D9D9D9',
 };
 
 function themeToCss(themeSet: ThemeColors) {

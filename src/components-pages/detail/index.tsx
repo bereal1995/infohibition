@@ -115,9 +115,10 @@ const StyledLink = styled(Link)`
 const Info = styled.div`
   padding: 12px;
   margin-bottom: 12px;
-  background: ${themeVar.on_background_elevated};
+  background: ${themeVar.secondary};
   border-radius: 5px;
   font-size: 12px;
+  color: ${themeVar.on_secondary};
 `;
 
 const Description = styled.div`
