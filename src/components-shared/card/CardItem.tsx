@@ -47,7 +47,8 @@ const Container = styled(Link)`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  border: 1px solid ${themeVar.outline};
+  /* border: 1px solid ${themeVar.outline}; */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 `;
 
@@ -57,21 +58,15 @@ const Thumbnail = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 82.5%;
   img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 `;
 
 const Content = styled.div`
-  padding: 8px 16px 16px 16px;
+  padding: 12px 16px 16px 16px;
+  background: ${themeVar.background_elevated};
 `;
 
 const PerformanceType = styled.div`
@@ -79,14 +74,15 @@ const PerformanceType = styled.div`
   align-items: center;
   gap: 2px;
   font-size: 12px;
-  color: ${themeVar.sub_text};
+  /* color: ${themeVar.sub_text}; */
+  color: ${themeVar.primary};
 `;
 
 const Title = styled.div`
-  margin: 4px 0;
+  margin: 10px 0 6px;
   font-size: 18px;
   line-height: 1;
-  letter-spacing: -1px;
+  /* letter-spacing: -1px; */
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
@@ -96,7 +92,7 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.4;
   white-space: pre-wrap;
   color: ${themeVar.sub_text};
 `;

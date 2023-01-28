@@ -1,4 +1,5 @@
 import Logo from '@/img/logo.svg';
+import { themeVar } from '@/utils/theme';
 import styled from '@emotion/styled';
 
 interface Props {
@@ -30,7 +31,7 @@ const StyledHeader = styled.header`
   justify-content: center;
   height: 56px;
   padding: 16px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid ${themeVar.highlight};
 `;
 
 const Title = styled.div`

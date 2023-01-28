@@ -61,11 +61,9 @@ const Container = styled.div``;
 
 const Thumb = styled.div`
   width: 100%;
-  height: 190px;
   margin-bottom: 14px;
   img {
     width: 100%;
-    height: 100%;
     object-fit: contain;
   }
 `;
@@ -115,10 +113,10 @@ const StyledLink = styled(Link)`
 const Info = styled.div`
   padding: 12px;
   margin-bottom: 12px;
-  background: ${themeVar.secondary};
+  background: ${themeVar.background_elevated};
   border-radius: 5px;
   font-size: 12px;
-  color: ${themeVar.on_secondary};
+  color: ${themeVar.sub_text};
 `;
 
 const Description = styled.div`

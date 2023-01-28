@@ -23,14 +23,14 @@ interface ThemeColors {
 type ThemeColorsKey = keyof ThemeColors;
 
 const colors: ThemeColors = {
-  primary: '#223A5E',
+  primary: '#3b80e7',
   on_primary: '#FFFFFF',
   primary_variant: '#97BAEA',
   secondary: '#144955',
   on_secondary: '#FFFFFF',
   secondary_variant: '#A9EDFF',
-  background: '#F7F8F9',
-  on_background: '#000000',
+  background: '#DDDDDD',
+  on_background: '#1f1f1f',
   background_elevated: '#F5F5F5',
   on_background_elevated: '#e5e5e5',
   surface: '#F7F8F9',
@@ -41,11 +41,11 @@ const colors: ThemeColors = {
   on_error: '#FFFFFF',
   highlight: '#BCBCBC',
   outline: '#4D4D4D',
-  sub_text: '#495057',
+  sub_text: '#4D4D4D',
 };
 
 const darkColors: ThemeColors = {
-  primary: '#748BAC',
+  primary: '#3b80e7',
   on_primary: '#FFFFFF',
   primary_variant: '#1B2E4B',
   secondary: '#539EAF',
@@ -53,7 +53,7 @@ const darkColors: ThemeColors = {
   secondary_variant: '#004E5D',
   background: '#16181A',
   on_background: '#FFFFFF',
-  background_elevated: '#16181A',
+  background_elevated: '#1f1f1f',
   on_background_elevated: '#FFFFFF',
   surface: '#16181A',
   on_surface: '#FFFFFF',

@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { Noto_Sans_KR } from '@next/font/google';
+import { Noto_Sans_KR, Roboto } from '@next/font/google';
 import {
   Hydrate,
   QueryClient,
@@ -16,6 +16,11 @@ const notoSansKr = Noto_Sans_KR({
   weight: '400',
   subsets: ['latin'],
 });
+const roboto = Roboto({
+  weight: ['400', '500'],
+  subsets: ['latin'],
+});
+// TODO: 한글은 noto sans kr, 영어는 roboto로 설정
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -25,7 +30,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <style jsx global>
         {`
           html {
-            font-family: ${notoSansKr.style.fontFamily};
+            font-family: ${roboto.style.fontFamily},
+              ${notoSansKr.style.fontFamily};
           }
         `}
       </style>
