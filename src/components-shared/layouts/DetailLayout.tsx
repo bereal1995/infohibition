@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 import Header from '@/components-shared/header';
-import FullHeightPage from '@/components-shared/system/FullHeightPage';
 import { useGoBack } from '@/hooks/useGoBack';
 import HeaderBackButton from '@/components-shared/buttons/HeaderBackButton';
 
@@ -29,7 +28,7 @@ function BasicLayout({
   const goBack = useGoBack();
 
   return (
-    <FullHeightPage>
+    <>
       <Header
         title={title}
         headerLeft={
@@ -40,7 +39,7 @@ function BasicLayout({
         headerRight={headerRight}
       />
       <Content>{children}</Content>
-    </FullHeightPage>
+    </>
   );
 }
 

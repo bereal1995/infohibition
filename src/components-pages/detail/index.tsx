@@ -23,8 +23,6 @@ function DetailContainer() {
     ? perforInfo?.contents1?.[0] + perforInfo?.contents2?.[0]
     : '등록된 내용이 없습니다.';
 
-  console.log('perforInfo', perforInfo);
-
   return (
     <Container>
       <Thumb>

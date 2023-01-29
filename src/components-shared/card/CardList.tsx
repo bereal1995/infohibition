@@ -8,10 +8,11 @@ interface Props {
 }
 
 function CardList({ items }: Props) {
-  if (!items) return <Container>리스트가 없습니다</Container>;
+  if (items.length === 0) return <Container>리스트가 없습니다.</Container>;
+
   return (
     <Container>
-      {items.map((item, index) => (
+      {items.map((item) => (
         <CardItem key={item.seq[0]} item={item} />
       ))}
     </Container>

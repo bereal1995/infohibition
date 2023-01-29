@@ -1,8 +1,10 @@
-import CardList from 'src/components-shared/card/CardList';
-import { PerformanceDisplay } from '@/types/items';
 import styled from '@emotion/styled';
+
+import { PerformanceDisplay } from '@/types/items';
+import Spinner from '@/components-shared/system/Spinner';
+import { useInfiniteItems } from '@/components-pages/home/hooks/useItems';
 import { useIntersect } from '@/hooks/useIntersect';
-import { useInfiniteItems } from 'src/components-pages/home/hooks/useItems';
+import CardList from '@/components-shared/card/CardList';
 
 interface Props {
   data: PerformanceDisplay;
@@ -25,9 +27,9 @@ function HomeContainer() {
 
   return (
     <Container>
-      <CardList items={listData} />
+      {listData ? <CardList items={listData} /> : <Spinner />}
       <div ref={ref} className="h-px" />
-      {isFetchingNextPage && <div>계속 불러오는 중</div>}
+      {isFetchingNextPage && <Spinner />}
     </Container>
   );
 }

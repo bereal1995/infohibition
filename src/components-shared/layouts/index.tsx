@@ -1,5 +1,4 @@
 import Header from 'src/components-shared/header';
-import FullHeightPage from 'src/components-shared/system/FullHeightPage';
 import styled from '@emotion/styled';
 import MenuIcon from '@/img/header_menu.svg';
 import SearchIcon from '@/img/search.svg';
@@ -24,7 +23,7 @@ function TabLayout({
   className,
 }: Props) {
   return (
-    <FullHeightPage>
+    <>
       <Header
         title={title}
         headerLeft={
@@ -47,7 +46,7 @@ function TabLayout({
       />
       <Content className={className}>{children}</Content>
       {/* <Footer /> */}
-    </FullHeightPage>
+    </>
   );
 }
 

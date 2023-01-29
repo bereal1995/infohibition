@@ -11,6 +11,7 @@ import { ThemeProvider } from '@/providers/ThemeProvider';
 import GlobalStyle from '@/styles/GlobalStyle';
 import { useState } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import ScrollRemember from '@/components-shared/system/ScrollRemember';
 
 const notoSansKr = Noto_Sans_KR({
   weight: '400',
@@ -20,7 +21,6 @@ const roboto = Roboto({
   weight: ['400', '500'],
   subsets: ['latin'],
 });
-// TODO: 한글은 noto sans kr, 영어는 roboto로 설정
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -39,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider>
             <GlobalStyle />
+            <ScrollRemember />
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>
