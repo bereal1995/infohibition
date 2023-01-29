@@ -47,12 +47,12 @@ const Container = styled(Link)`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  /* border: 1px solid ${themeVar.outline}; */
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 `;
 
 const Thumbnail = styled.div`
+  overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
@@ -60,7 +60,7 @@ const Thumbnail = styled.div`
   width: 100%;
   img {
     width: 100%;
-    object-fit: cover;
+    transform: scale(1.01);
   }
 `;
 
@@ -74,7 +74,6 @@ const PerformanceType = styled.div`
   align-items: center;
   gap: 2px;
   font-size: 12px;
-  /* color: ${themeVar.sub_text}; */
   color: ${themeVar.primary};
 `;
 
@@ -82,7 +81,6 @@ const Title = styled.div`
   margin: 10px 0 6px;
   font-size: 18px;
   line-height: 1;
-  /* letter-spacing: -1px; */
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;

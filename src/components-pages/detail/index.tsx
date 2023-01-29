@@ -58,11 +58,12 @@ function DetailContainer() {
 const Container = styled.div``;
 
 const Thumb = styled.div`
+  overflow: hidden;
   width: 100%;
   margin-bottom: 14px;
   img {
     width: 100%;
-    object-fit: contain;
+    transform: scale(1.01);
   }
 `;
 
