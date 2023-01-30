@@ -1,11 +1,8 @@
-import { PerformanceDisplay } from '@/types/items';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import xml2js from 'xml2js';
 
-let setQuery = (params: any) =>
-  Object.keys(params)
-    .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-    .join('&');
+import { PerformanceDisplay } from '@/types/items';
+import { objectToQueryStr } from '@/utils/api';
 
 const BASE_URL = process.env.BASE_URL ?? 'http://localhost:3000/api';
 
@@ -14,7 +11,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const query = req.query;
-  const url = `${BASE_URL}/${query.type}?${setQuery(query)}`;
+  const url = `${BASE_URL}/${query.type}?${objectToQueryStr(query)}`;
 
   const response = await fetch(url);
   const xmlData = await response.text();

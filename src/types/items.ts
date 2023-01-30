@@ -1,5 +1,29 @@
+import { REALM_CODE } from 'src/contants/items';
+
 export type PerformanceType = 'period' | 'area' | 'realm';
+type SidoType =
+  | '서울'
+  | '경기'
+  | '인천'
+  | '강원'
+  | '충북'
+  | '충남'
+  | '대전'
+  | '세종'
+  | '전북'
+  | '전남'
+  | '광주'
+  | '경북'
+  | '경남'
+  | '대구'
+  | '울산'
+  | '부산'
+  | '제주';
+
 export interface PerformanceParams {
+  realmCode?: typeof REALM_CODE[keyof typeof REALM_CODE];
+  sido: SidoType;
+  gugun: string;
   from: string;
   to: string;
   cPage: any;

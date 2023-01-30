@@ -1,14 +1,10 @@
 import styled from '@emotion/styled';
 
-import { PerformanceDisplay } from '@/types/items';
 import Spinner from '@/components-shared/system/Spinner';
 import { useInfiniteItems } from '@/components-pages/home/hooks/useItems';
 import { useIntersect } from '@/hooks/useIntersect';
 import CardList from '@/components-shared/card/CardList';
-
-interface Props {
-  data: PerformanceDisplay;
-}
+import { PerforItem } from '@/types/items';
 
 function HomeContainer() {
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteItems();
@@ -20,16 +16,22 @@ function HomeContainer() {
     }
   });
 
-  const listData = data?.pages?.reduce(
-    (acc, page) => [...acc, ...page.perforList],
-    [] as PerformanceDisplay[]
+  const listData: PerforItem[] = data?.pages?.reduce(
+    (acc, page) => [...acc, ...(page?.perforList ?? [])],
+    []
   );
+  const { totalCount } = data?.pages.at(0) ?? {};
+  const isLastPage = Number(totalCount?.[0] ?? 0) === listData?.length ?? 0;
 
   return (
     <Container>
       {listData ? <CardList items={listData} /> : <Spinner />}
-      <div ref={ref} className="h-px" />
-      {isFetchingNextPage && <Spinner />}
+      {!isLastPage && <div ref={ref} className="h-px" />}
+      {isFetchingNextPage && (
+        <div className="relative h-[24px]">
+          <Spinner />
+        </div>
+      )}
     </Container>
   );
 }
