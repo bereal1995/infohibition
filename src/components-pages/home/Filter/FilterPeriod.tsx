@@ -42,7 +42,6 @@ function FilterPeriod() {
 
   useEffect(() => {
     registerLocale('ko-kr', ko);
-    setMonthQueryState(monthQuery);
   }, []);
 
   return (

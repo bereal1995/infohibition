@@ -13,27 +13,26 @@ import {
 function FilterContent() {
   const router = useRouter();
   const { close } = useBottomSheetModalActions();
-  const { setQueries } = useFilterQueriesActions();
+  const { clearQueries } = useFilterQueriesActions();
 
   const onClickSelectButton = () => {
-    const queries = useFilterQueriesStore.getState().queries;
+    const queriesState = useFilterQueriesStore.getState().queries;
     const newQueries =
-      queries.month === 'custom'
-        ? { ...queries }
-        : { ...queries, from: undefined, to: undefined };
+      queriesState.month === 'custom'
+        ? { ...queriesState }
+        : { ...queriesState, from: undefined, to: undefined };
 
     router.replace({ query: newQueries });
-    if (queries.month !== 'custom')
-      setQueries({ from: undefined, to: undefined });
+    clearQueries();
     close();
   };
 
   return (
     <Container>
-      <PeriodContainer>
+      <div>
         <h2>조회 기간</h2>
         <FilterPeriod />
-      </PeriodContainer>
+      </div>
       <StyledButton fullWidth onClick={onClickSelectButton}>
         선택
       </StyledButton>

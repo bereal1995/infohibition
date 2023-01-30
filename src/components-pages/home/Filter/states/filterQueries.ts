@@ -8,6 +8,7 @@ import {
   realmNameType,
 } from '@/components-pages/home/hooks/useFilterQuery';
 import { SortType } from '@/constants/items';
+import moment from 'moment';
 
 interface FilterQueriesState {
   queries: FilterQueries;
@@ -16,7 +17,6 @@ interface FilterQueriesState {
   setToQuery(from: string): void;
   setSortQuery(sort: SortType): void;
   setRealmCodeQuery(realmCode: realmNameType): void;
-  setQueries(queries: Partial<FilterQueries>): void;
   clearQueries(): void;
 }
 
@@ -25,13 +25,14 @@ const initialState: FilterQueriesState = {
     month: '1',
     sort: '1',
     realmCode: undefined,
+    from: moment().format('YYYYMMDD'),
+    to: moment().add(3, 'month').format('YYYYMMDD'),
   },
   setMonthQuery: () => {},
   setFromQuery: () => {},
   setToQuery: () => {},
   setSortQuery: () => {},
   setRealmCodeQuery: () => {},
-  setQueries: () => {},
   clearQueries: () => {},
 };
 
@@ -58,9 +59,6 @@ export const useFilterQueriesStore = create<FilterQueriesState>()(
       setRealmCodeQuery: (realmCode: realmNameType) => {
         set((prev) => ({ queries: { ...prev.queries, realmCode } }));
       },
-      setQueries: (queries: Partial<FilterQueries>) => {
-        set((prev) => ({ queries: { ...prev.queries, ...queries } }));
-      },
       clearQueries: () => {
         set(() => ({ queries: initialState.queries }));
       },
@@ -72,7 +70,7 @@ export const useFilterQueriesStore = create<FilterQueriesState>()(
 );
 
 export const monthSelector = (state: FilterQueriesState) => state.queries.month;
-export const fromToSelector = (state: FilterQueriesState) => ({
+export const dateSelector = (state: FilterQueriesState) => ({
   fromState: state.queries.from,
   toState: state.queries.to,
 });
@@ -85,7 +83,6 @@ export function useFilterQueriesActions() {
       setToQuery: state.setToQuery,
       setSortQuery: state.setSortQuery,
       setRealmCodeQuery: state.setRealmCodeQuery,
-      setQueries: state.setQueries,
       clearQueries: state.clearQueries,
     }),
     shallow

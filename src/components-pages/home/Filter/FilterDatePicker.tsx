@@ -1,47 +1,61 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import { themeVar } from '@/utils/theme';
 import {
-  fromToSelector,
+  dateSelector,
   useFilterQueriesActions,
   useFilterQueriesStore,
 } from '@/components-pages/home/Filter/states/filterQueries';
+import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
+
+interface SelectedDate {
+  from: Date;
+  to: Date;
+}
 
 function FilterDatePicker() {
-  const { fromState, toState } = useFilterQueriesStore(fromToSelector);
+  const { queries } = useFilterQuery();
+  const { to, from } = queries;
+  const { fromState, toState } = useFilterQueriesStore(dateSelector);
+  const initialDate = {
+    from: moment(from || fromState).toDate(),
+    to: moment(to || toState).toDate(),
+  };
+  const [selectedDate, setSelectedDate] = useState<SelectedDate>(initialDate);
   const { setFromQuery, setToQuery } = useFilterQueriesActions();
-  const from = moment(fromState).toDate();
-  const to = toState
-    ? moment(toState).toDate()
-    : moment(toState).add(3, 'month').toDate();
 
-  useEffect(() => {
-    setFromQuery(moment(from).format('YYYYMMDD'));
-    setToQuery(moment(to).format('YYYYMMDD'));
-  }, []);
+  const onChangeFrom = (date: Date) => {
+    setFromQuery(moment(date).format('YYYYMMDD'));
+    setSelectedDate({ ...selectedDate, from: date });
+  };
+
+  const onChangeTo = (date: Date) => {
+    setToQuery(moment(date).format('YYYYMMDD'));
+    setSelectedDate({ ...selectedDate, to: date });
+  };
 
   return (
     <Container>
       <DatePicker
         wrapperClassName="ih-date-picker"
         dayClassName={(date) => 'ih-day-picker'}
-        selected={from}
-        onChange={(date) => setFromQuery(moment(date).format('YYYYMMDD'))}
+        selected={selectedDate.from}
+        onChange={onChangeFrom}
         locale="ko-kr"
         dateFormat="yyyy년 MM월 dd일"
-        maxDate={to}
+        maxDate={selectedDate.to}
       />
       <span>-</span>
       <DatePicker
         wrapperClassName="ih-date-picker"
-        selected={to}
-        onChange={(date) => setToQuery(moment(date).format('YYYYMMDD'))}
+        selected={selectedDate.to}
+        onChange={onChangeTo}
         locale="ko-kr"
         dateFormat="yyyy년 MM월 dd일"
-        minDate={from}
+        minDate={selectedDate.from}
       />
     </Container>
   );
