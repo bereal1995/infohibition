@@ -12,6 +12,7 @@ import GlobalStyle from '@/styles/GlobalStyle';
 import { useState } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ScrollRemember from '@/components-shared/system/ScrollRemember';
+import GlobalBottomSheetModal from '@/components-shared/bottomSheetModal/GlobalBottomSheetModal';
 
 const notoSansKr = Noto_Sans_KR({
   weight: '400',
@@ -38,9 +39,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider>
+            <Component {...pageProps} />
             <GlobalStyle />
             <ScrollRemember />
-            <Component {...pageProps} />
+            <GlobalBottomSheetModal />
           </ThemeProvider>
         </Hydrate>
         <ReactQueryDevtools initialIsOpen={false} />

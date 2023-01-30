@@ -20,6 +20,7 @@
       "@/components-pages/*": ["src/components-pages/*"],
       "@/components-shared/*": ["src/components-shared/*"],
       "@/styles/*": ["src/styles/*"],
+      "@/states/*": ["src/states/*"],
       "@/img/*": ["src/assets/img/*"],
       "@/providers/*": ["src/providers/*"],
       "@/hooks/*": ["src/hooks/*"],
