@@ -1,12 +1,6 @@
 import { getItems } from '@/api/items';
 import { PerformanceParams, PerformanceType } from '@/types/items';
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
-
-export const useItems = () =>
-  useQuery({
-    queryKey: ['items'],
-    queryFn: () => getItems(),
-  });
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 export const useInfiniteItems = (
   type: PerformanceType = 'period',
@@ -14,7 +8,8 @@ export const useInfiniteItems = (
 ) =>
   useInfiniteQuery({
     queryKey: ['items'],
-    queryFn: ({ pageParam }) => getItems(pageParam, type, params),
+    queryFn: ({ pageParam }) =>
+      getItems(type, { ...params, cPage: pageParam || 1 }),
     getNextPageParam: (lastPage) => {
       const { cPage, totalCount, rows } = lastPage;
       const totalPage = Math.ceil(totalCount / rows);

@@ -1,4 +1,4 @@
-import { REALM_CODE } from 'src/contants/items';
+import { RealmCodeType, SortType } from '@/constants/items';
 
 export type PerformanceType = 'period' | 'area' | 'realm';
 type SidoType =
@@ -21,7 +21,7 @@ type SidoType =
   | '제주';
 
 export interface PerformanceParams {
-  realmCode?: typeof REALM_CODE[keyof typeof REALM_CODE];
+  realmCode?: RealmCodeType;
   sido: SidoType;
   gugun: string;
   from: string;
@@ -34,10 +34,7 @@ export interface PerformanceParams {
   gpsxto: string | number;
   gpsyto: string | number;
   keyword: string;
-  /**
-   * 1: 등록일, 2: 공연명, 3: 지역
-   */
-  sortStdr: 1 | 2 | 3;
+  sortStdr: SortType;
 }
 
 export interface PerformanceDisplay {

@@ -10,8 +10,7 @@ import {
 const SERVICE_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 const getItemsDefaultParams: Partial<PerformanceParams> = {
-  from: moment().subtract(6, 'month').format('YYYYMMDD'),
-  to: moment().format('YYYYMMDD'),
+  from: moment().format('YYYYMMDD'),
   rows: 10,
   place: '',
   gpsxfrom: '',
@@ -19,21 +18,19 @@ const getItemsDefaultParams: Partial<PerformanceParams> = {
   gpsxto: '',
   gpsyto: '',
   keyword: '',
-  sortStdr: 1,
 };
 
 export const getItems = async (
-  pageParam: number = 1,
   type: PerformanceType = 'period',
   params?: Partial<PerformanceParams>
 ) => {
+  console.log('type', type);
   const result = await client.get(`/items`, {
     params: {
       ServiceKey: SERVICE_KEY,
       type,
       ...getItemsDefaultParams,
       ...params,
-      cPage: pageParam,
     },
   });
   return result.data;

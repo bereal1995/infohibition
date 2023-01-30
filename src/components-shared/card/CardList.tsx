@@ -20,8 +20,7 @@ function CardList({ items }: Props) {
 }
 
 const Container = styled.div`
-  padding: 0 16px;
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 export default CardList;

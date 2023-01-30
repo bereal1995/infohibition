@@ -10,3 +10,11 @@ export const REALM_CODE = {
   SPACE: 'J000',
   ETC: 'L000',
 } as const;
+export type RealmCodeType = typeof REALM_CODE[keyof typeof REALM_CODE];
+
+export const SORT = {
+  REG_DATE: '1',
+  TITLE: '2',
+  LOCATION: '3',
+} as const;
+export type SortType = typeof SORT[keyof typeof SORT];

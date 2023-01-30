@@ -5,9 +5,16 @@ import { useInfiniteItems } from '@/components-pages/home/hooks/useItems';
 import { useIntersect } from '@/hooks/useIntersect';
 import CardList from '@/components-shared/card/CardList';
 import { PerforItem } from '@/types/items';
+import ListFilter from '@/components-pages/home/ListFilter';
+import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
 
 function HomeContainer() {
-  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteItems();
+  const { type, realmCode, to, sortStdr } = useFilterQuery();
+  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteItems(type, {
+    realmCode,
+    to,
+    sortStdr,
+  });
 
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
@@ -25,6 +32,7 @@ function HomeContainer() {
 
   return (
     <Container>
+      <ListFilter />
       {listData ? <CardList items={listData} /> : <Spinner />}
       {!isLastPage && <div ref={ref} className="h-px" />}
       {isFetchingNextPage && (
@@ -36,6 +44,8 @@ function HomeContainer() {
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 0 16px;
+`;
 
 export default HomeContainer;
