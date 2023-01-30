@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ScrollRemember from '@/components-shared/system/ScrollRemember';
 import GlobalBottomSheetModal from '@/components-shared/bottomSheetModal/GlobalBottomSheetModal';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const notoSansKr = Noto_Sans_KR({
   weight: '400',

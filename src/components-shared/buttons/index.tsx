@@ -6,15 +6,15 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = forwardRef(
   (props: Props, forwardRef: Ref<HTMLButtonElement>) => {
-    const { fullWidth = false, children, ...rest } = props;
+    const { fullWidth = false, className, children, ...rest } = props;
 
     return (
       <button
         ref={forwardRef}
+        {...rest}
         className={`flex items-center justify-center ${
           fullWidth ? 'w-full' : ''
-        }`}
-        {...rest}
+        } ${className}`}
       >
         <span>{children}</span>
       </button>

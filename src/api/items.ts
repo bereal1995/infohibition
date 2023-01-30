@@ -11,6 +11,7 @@ const SERVICE_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 const getItemsDefaultParams: Partial<PerformanceParams> = {
   from: moment().format('YYYYMMDD'),
+  to: moment().add(1, 'month').format('YYYYMMDD'),
   rows: 10,
   place: '',
   gpsxfrom: '',
@@ -24,7 +25,6 @@ export const getItems = async (
   type: PerformanceType = 'period',
   params?: Partial<PerformanceParams>
 ) => {
-  console.log('type', type);
   const result = await client.get(`/items`, {
     params: {
       ServiceKey: SERVICE_KEY,

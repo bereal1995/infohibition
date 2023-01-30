@@ -15,25 +15,30 @@ const initialState: BottomSheetModalState = {
   close: () => {},
 };
 
-const bottomSheetModalStore = create<BottomSheetModalState>()(
-  devtools((set) => ({
-    ...initialState,
-    open: (content: any) => {
-      set({ visible: true, content });
-    },
-    close: () => {
-      set((prev) => ({ ...prev, visible: false }));
-    },
-  }))
+const useBottomSheetModalStore = create<BottomSheetModalState>()(
+  devtools(
+    (set) => ({
+      ...initialState,
+      open: (content: any) => {
+        set({ visible: true, content });
+      },
+      close: () => {
+        set((prev) => ({ ...prev, visible: false }));
+      },
+    }),
+    {
+      name: 'bottomSheetModal',
+    }
+  )
 );
 
 export function useBottomSheetModalValue() {
-  const { visible, content } = bottomSheetModalStore();
+  const { visible, content } = useBottomSheetModalStore();
   return { visible, content };
 }
 
 export function useBottomSheetModalActions() {
-  const open = bottomSheetModalStore((state) => state.open);
-  const close = bottomSheetModalStore((state) => state.close);
+  const open = useBottomSheetModalStore((state) => state.open);
+  const close = useBottomSheetModalStore((state) => state.close);
   return { open, close };
 }

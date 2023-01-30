@@ -3,10 +3,8 @@ import styled from '@emotion/styled';
 import FilterIcon from '@/img/filter_icon.svg';
 import { RealmCodeType, SortType } from '@/constants/items';
 import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
-
-interface Props {
-  onClickFilter?: () => void;
-}
+import { useBottomSheetModalActions } from '@/states/bottomSheetModal';
+import FilterContent from '@/components-pages/home/Filter/FilterContent';
 
 const SORT_NAME: Record<SortType, string> = {
   ['1']: '등록일순',
@@ -28,15 +26,23 @@ const REEL_M_CODE_NAME: Record<RealmCodeType | 'all', string> = {
   all: '전체',
 };
 
-function ListFilter({ onClickFilter }: Props) {
-  const { month, realmCode = 'all', sortStdr } = useFilterQuery();
-  const realmCodeName = REEL_M_CODE_NAME[realmCode] ?? '전체';
-  const sortName = SORT_NAME[sortStdr] ?? '등록일순';
+function ListFilter() {
+  const { open } = useBottomSheetModalActions();
+  const { queries } = useFilterQuery();
+  const { month, realmCode = 'all', sortStdr, to, from } = queries;
+  const realmCodeName = REEL_M_CODE_NAME[realmCode] ?? REEL_M_CODE_NAME.all;
+  const sortName = SORT_NAME[sortStdr] ?? SORT_NAME['1'];
+  const monthName =
+    decodeURIComponent(month) === 'custom' ? `${from} ~ ${to}` : `${month}개월`;
+
+  const onClickFilter = () => {
+    open(<FilterContent />);
+  };
 
   return (
     <Container>
       <button onClick={onClickFilter}>
-        <span suppressHydrationWarning>{month}개월</span>
+        <span suppressHydrationWarning>{monthName}</span>
         <span>•</span>
         <span suppressHydrationWarning>{realmCodeName}</span>
         <span>•</span>

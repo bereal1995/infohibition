@@ -7,7 +7,7 @@ export const useInfiniteItems = (
   params?: Partial<PerformanceParams>
 ) =>
   useInfiniteQuery({
-    queryKey: ['items'],
+    queryKey: ['items', type, params],
     queryFn: ({ pageParam }) =>
       getItems(type, { ...params, cPage: pageParam || 1 }),
     getNextPageParam: (lastPage) => {

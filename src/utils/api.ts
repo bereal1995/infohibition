@@ -16,3 +16,13 @@ export function asPathToObjectQuery(asPath: string) {
   });
   return result;
 }
+
+export function removeEmptyValue(obj: any) {
+  const result: any = {};
+  Object.keys(obj).forEach((key) => {
+    if (obj[key] !== undefined && obj[key] !== null && obj[key] !== '') {
+      result[key] = obj[key];
+    }
+  });
+  return result;
+}

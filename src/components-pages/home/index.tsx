@@ -5,16 +5,18 @@ import { useInfiniteItems } from '@/components-pages/home/hooks/useItems';
 import { useIntersect } from '@/hooks/useIntersect';
 import CardList from '@/components-shared/card/CardList';
 import { PerforItem } from '@/types/items';
-import ListFilter from '@/components-pages/home/ListFilter';
+import ListFilter from '@/components-pages/home/Filter';
 import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
+import { removeEmptyValue } from '@/utils/api';
 
+// TODO: 에러바운더리 적용할때 데이터 정리 필요
 function HomeContainer() {
-  const { type, realmCode, to, sortStdr } = useFilterQuery();
-  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteItems(type, {
-    realmCode,
-    to,
-    sortStdr,
-  });
+  const { queries, type } = useFilterQuery();
+  const params = removeEmptyValue(queries);
+  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteItems(
+    type,
+    params
+  );
 
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
