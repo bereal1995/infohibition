@@ -7,7 +7,6 @@ import Link from 'next/link';
 import moment from 'moment';
 import 'moment/locale/ko';
 
-// TODO: 데이터 가공 관련 리팩토링 필요
 // TODO: 컴포넌트 분리할지 고민필요
 function DetailContainer() {
   const router = useRouter();
@@ -23,6 +22,11 @@ function DetailContainer() {
     ? perforInfo?.contents1?.[0] + perforInfo?.contents2?.[0]
     : '등록된 내용이 없습니다.';
 
+  const createTitle = (text?: string) => {
+    if (!text) return;
+    return { __html: text };
+  };
+
   return (
     <Container>
       <Thumb>
@@ -31,7 +35,10 @@ function DetailContainer() {
       <Content>
         <TitleWrap>
           <div>
-            <h2 className="text-[18px]">{perforInfo?.title?.[0]}</h2>
+            <h2
+              className="text-[18px]"
+              dangerouslySetInnerHTML={createTitle(perforInfo?.title?.[0])}
+            />
             <span className="text-[12px]">{perforInfo?.subTitle?.[0]}</span>
           </div>
           <StyledLink href={perforInfo?.url?.[0] ?? '/'} target="_blank">
