@@ -15,6 +15,11 @@ import { useState } from 'react';
 
 type FilterGenreSelectorNames = RealmCodesType | typeof REALM_ALL['code'];
 
+const GenreList = REALM_CODES.map((code) => ({
+  code,
+  name: REALM_OBJ[code],
+}));
+
 function FilterGenreSelector() {
   const { queries } = useFilterQuery();
   const { realmCode } = queries;
@@ -22,10 +27,6 @@ function FilterGenreSelector() {
     realmCode || REALM_ALL.code
   );
   const { setRealmCodeQuery } = useFilterQueriesActions();
-  const list = REALM_CODES.map((code) => ({
-    code,
-    name: REALM_OBJ[code],
-  }));
 
   const onClickIndicator = (code: FilterGenreSelectorNames) => {
     setSelected(code);
@@ -35,7 +36,7 @@ function FilterGenreSelector() {
   return (
     <Container>
       <ListContainer>
-        {list.map(({ code, name }) => (
+        {GenreList.map(({ code, name }) => (
           <IndicatorContainer key={name} whileTap={{ scale: 1.1 }}>
             <IndicatorItem
               isActive={selected === code}
