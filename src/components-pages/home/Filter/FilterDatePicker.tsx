@@ -5,9 +5,8 @@ import moment from 'moment';
 
 import { themeVar } from '@/utils/theme';
 import {
-  dateSelector,
+  useDateStore,
   useFilterQueriesActions,
-  useFilterQueriesStore,
 } from '@/components-pages/home/Filter/states/filterQueries';
 import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
 
@@ -19,7 +18,7 @@ interface SelectedDate {
 function FilterDatePicker() {
   const { queries } = useFilterQuery();
   const { to, from } = queries;
-  const { fromState, toState } = useFilterQueriesStore(dateSelector);
+  const { fromState, toState } = useDateStore();
   const initialDate = {
     from: moment(from || fromState).toDate(),
     to: moment(to || toState).toDate(),

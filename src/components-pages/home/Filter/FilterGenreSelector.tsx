@@ -19,7 +19,7 @@ function FilterGenreSelector() {
   const { queries } = useFilterQuery();
   const { realmCode } = queries;
   const [selected, setSelected] = useState<FilterGenreSelectorNames>(
-    realmCode ?? REALM_ALL.code
+    realmCode || REALM_ALL.code
   );
   const { setRealmCodeQuery } = useFilterQueriesActions();
   const list = REALM_CODES.map((code) => ({

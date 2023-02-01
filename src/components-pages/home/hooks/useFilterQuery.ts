@@ -6,7 +6,7 @@ import { RealmCodesType, SortType } from '@/constants/items';
 
 export interface FilterQueries {
   month: string;
-  sort: SortType;
+  sortStdr: SortType;
   realmCode?: RealmCodesType;
   to?: string;
   from?: string;
@@ -18,13 +18,19 @@ export interface FilterQueries {
 export const useFilterQuery = () => {
   const { asPath } = useRouter();
   const query = asPathToObjectQuery(asPath);
-  const { month = '1', sort = '1', realmCode, to, from }: FilterQueries = query;
+  const {
+    month = '1',
+    sortStdr = '1',
+    realmCode,
+    to,
+    from,
+  }: FilterQueries = query;
   const type: PerformanceType = realmCode ? 'realm' : 'period';
 
   const queries = {
     month,
     realmCode,
-    sortStdr: sort,
+    sortStdr,
     from,
     to,
   };

@@ -1,20 +1,19 @@
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 
-import FilterPeriod from '@/components-pages/home/Filter/FilterPeriod';
 import Button from '@/components-shared/buttons';
 import { themeVar } from '@/utils/theme';
 import { useBottomSheetModalActions } from '@/states/bottomSheetModal';
-import {
-  useFilterQueriesActions,
-  useFilterQueriesStore,
-} from '@/components-pages/home/Filter/states/filterQueries';
+import { useFilterQueriesStore } from '@/components-pages/home/Filter/states/filterQueries';
 import FilterGenreSelector from '@/components-pages/home/Filter/FilterGenreSelector';
+import {
+  FilterPeriod,
+  FilterSortStdr,
+} from '@/components-pages/home/Filter/FilterIndicator';
 
 function FilterContent() {
   const router = useRouter();
   const { close } = useBottomSheetModalActions();
-  const { clearQueries } = useFilterQueriesActions();
 
   const onClickSelectButton = () => {
     const queriesState = useFilterQueriesStore.getState().queries;
@@ -24,13 +23,12 @@ function FilterContent() {
         : { ...queriesState, from: undefined, to: undefined };
 
     router.replace({ query: newQueries });
-    clearQueries();
     close();
   };
 
   return (
     <Container>
-      <div>
+      <PeriodContainer>
         <div>
           <h2>조회 기간</h2>
           <FilterPeriod />
@@ -39,7 +37,11 @@ function FilterContent() {
           <h2>장르</h2>
           <FilterGenreSelector />
         </div>
-      </div>
+        <div className="mt-[12px] pb-5">
+          <h2>정렬</h2>
+          <FilterSortStdr />
+        </div>
+      </PeriodContainer>
       <StyledButton fullWidth onClick={onClickSelectButton}>
         선택
       </StyledButton>
@@ -53,6 +55,7 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 10px 16px;
   min-height: 460px;
+  max-height: 80vh;
   background: ${themeVar.background};
   h2 {
     margin-bottom: 10px;
@@ -62,10 +65,13 @@ const Container = styled.div`
   }
 `;
 
-const PeriodContainer = styled.div``;
+const PeriodContainer = styled.div`
+  overflow: scroll;
+`;
 
 const StyledButton = styled(Button)`
   height: 40px;
+  margin-top: 10px;
   background: ${themeVar.primary};
   border-radius: 15px;
   color: ${themeVar.on_primary};

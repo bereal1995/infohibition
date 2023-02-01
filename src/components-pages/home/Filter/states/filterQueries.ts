@@ -12,15 +12,16 @@ interface FilterQueriesState {
   setMonthQuery(month: string): void;
   setFromQuery(from: string): void;
   setToQuery(from: string): void;
-  setSortQuery(sort: SortType): void;
+  setSortQuery(sort: string): void;
   setRealmCodeQuery(realmCode?: RealmCodesType): void;
+  setQueries(queries: FilterQueries): void;
   clearQueries(): void;
 }
 
 const initialState: FilterQueriesState = {
   queries: {
     month: '1',
-    sort: '1',
+    sortStdr: '1',
     realmCode: undefined,
     from: moment().format('YYYYMMDD'),
     to: moment().add(3, 'month').format('YYYYMMDD'),
@@ -30,6 +31,7 @@ const initialState: FilterQueriesState = {
   setToQuery: () => {},
   setSortQuery: () => {},
   setRealmCodeQuery: () => {},
+  setQueries: () => {},
   clearQueries: () => {},
 };
 
@@ -38,7 +40,11 @@ export const useFilterQueriesStore = create<FilterQueriesState>()(
     (set, get) => ({
       ...initialState,
       setMonthQuery: (month: string) => {
-        set((prev) => ({ queries: { ...prev.queries, month } }));
+        set(
+          produce((state) => {
+            state.queries.month = month;
+          })
+        );
       },
       setFromQuery: (from: string) => {
         set(
@@ -48,13 +54,32 @@ export const useFilterQueriesStore = create<FilterQueriesState>()(
         );
       },
       setToQuery: (to: string) => {
-        set((prev) => ({ queries: { ...prev.queries, to } }));
+        set(
+          produce((state) => {
+            state.queries.to = to;
+          })
+        );
       },
-      setSortQuery: (sort: SortType) => {
-        set((prev) => ({ queries: { ...prev.queries, sort } }));
+      setSortQuery: (sortStdr: SortType) => {
+        set(
+          produce((state) => {
+            state.queries.sortStdr = sortStdr;
+          })
+        );
       },
       setRealmCodeQuery: (realmCode: RealmCodesType) => {
-        set((prev) => ({ queries: { ...prev.queries, realmCode } }));
+        set(
+          produce((state) => {
+            state.queries.realmCode = realmCode;
+          })
+        );
+      },
+      setQueries: (queries: FilterQueries) => {
+        set(
+          produce((state) => {
+            state.queries = queries;
+          })
+        );
       },
       clearQueries: () => {
         set(() => ({ queries: initialState.queries }));
@@ -67,10 +92,15 @@ export const useFilterQueriesStore = create<FilterQueriesState>()(
 );
 
 export const monthSelector = (state: FilterQueriesState) => state.queries.month;
-export const dateSelector = (state: FilterQueriesState) => ({
-  fromState: state.queries.from,
-  toState: state.queries.to,
-});
+
+export const useDateStore = () =>
+  useFilterQueriesStore(
+    (state: FilterQueriesState) => ({
+      fromState: state.queries.from,
+      toState: state.queries.to,
+    }),
+    shallow
+  );
 
 export function useFilterQueriesActions() {
   return useFilterQueriesStore(
@@ -80,6 +110,7 @@ export function useFilterQueriesActions() {
       setToQuery: state.setToQuery,
       setSortQuery: state.setSortQuery,
       setRealmCodeQuery: state.setRealmCodeQuery,
+      setQueries: state.setQueries,
       clearQueries: state.clearQueries,
     }),
     shallow
