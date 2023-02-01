@@ -3,11 +3,8 @@ import { devtools } from 'zustand/middleware';
 import { shallow } from 'zustand/shallow';
 import produce from 'immer';
 
-import {
-  FilterQueries,
-  realmNameType,
-} from '@/components-pages/home/hooks/useFilterQuery';
-import { SortType } from '@/constants/items';
+import { FilterQueries } from '@/components-pages/home/hooks/useFilterQuery';
+import { RealmCodesType, SortType } from '@/constants/items';
 import moment from 'moment';
 
 interface FilterQueriesState {
@@ -16,7 +13,7 @@ interface FilterQueriesState {
   setFromQuery(from: string): void;
   setToQuery(from: string): void;
   setSortQuery(sort: SortType): void;
-  setRealmCodeQuery(realmCode: realmNameType): void;
+  setRealmCodeQuery(realmCode?: RealmCodesType): void;
   clearQueries(): void;
 }
 
@@ -56,7 +53,7 @@ export const useFilterQueriesStore = create<FilterQueriesState>()(
       setSortQuery: (sort: SortType) => {
         set((prev) => ({ queries: { ...prev.queries, sort } }));
       },
-      setRealmCodeQuery: (realmCode: realmNameType) => {
+      setRealmCodeQuery: (realmCode: RealmCodesType) => {
         set((prev) => ({ queries: { ...prev.queries, realmCode } }));
       },
       clearQueries: () => {

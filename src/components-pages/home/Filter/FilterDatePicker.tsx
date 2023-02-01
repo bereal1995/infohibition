@@ -68,7 +68,7 @@ const Container = styled.div`
   height: 32px;
   padding: 5px;
   margin-top: 5px;
-  border: 1px solid ${themeVar.highlight};
+  border: 1px solid ${themeVar.outline};
   border-radius: 5px;
   font-size: 12px;
 

@@ -9,6 +9,7 @@ import {
   useFilterQueriesActions,
   useFilterQueriesStore,
 } from '@/components-pages/home/Filter/states/filterQueries';
+import FilterGenreSelector from '@/components-pages/home/Filter/FilterGenreSelector';
 
 function FilterContent() {
   const router = useRouter();
@@ -30,8 +31,14 @@ function FilterContent() {
   return (
     <Container>
       <div>
-        <h2>조회 기간</h2>
-        <FilterPeriod />
+        <div>
+          <h2>조회 기간</h2>
+          <FilterPeriod />
+        </div>
+        <div className="mt-[12px]">
+          <h2>장르</h2>
+          <FilterGenreSelector />
+        </div>
       </div>
       <StyledButton fullWidth onClick={onClickSelectButton}>
         선택

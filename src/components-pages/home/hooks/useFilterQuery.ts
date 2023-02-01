@@ -1,15 +1,13 @@
 import { useRouter } from 'next/router';
 
-import { PerformanceParams, PerformanceType } from '@/types/items';
+import { PerformanceType } from '@/types/items';
 import { asPathToObjectQuery } from '@/utils/api';
-import { SortType } from '@/constants/items';
-
-export type realmNameType = PerformanceParams['realmCode'];
+import { RealmCodesType, SortType } from '@/constants/items';
 
 export interface FilterQueries {
   month: string;
   sort: SortType;
-  realmCode: realmNameType;
+  realmCode?: RealmCodesType;
   to?: string;
   from?: string;
 }

@@ -69,7 +69,7 @@ const PeriodContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid ${themeVar.highlight};
+  border: 1px solid ${themeVar.outline};
   border-radius: 5px;
 `;
 
@@ -77,10 +77,10 @@ const PeriodButton = styled.button<{ active?: boolean }>`
   position: relative;
   width: 33.3%;
   height: 32px;
-  color: ${themeVar.highlight};
+  color: ${themeVar.sub_text};
   font-size: 14px;
   &:not(:last-child) {
-    border-right: 1px solid ${themeVar.highlight};
+    border-right: 1px solid ${themeVar.outline};
   }
   ${({ active }) =>
     active &&

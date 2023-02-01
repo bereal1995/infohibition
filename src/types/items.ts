@@ -1,4 +1,4 @@
-import { RealmCodeType, SortType } from '@/constants/items';
+import { RealmCodesType, RealmNamesType, SortType } from '@/constants/items';
 
 export type PerformanceType = 'period' | 'area' | 'realm';
 type SidoType =
@@ -21,7 +21,7 @@ type SidoType =
   | '제주';
 
 export interface PerformanceParams {
-  realmCode?: RealmCodeType;
+  realmCode?: RealmCodesType;
   sido: SidoType;
   gugun: string;
   from: string;
@@ -58,25 +58,12 @@ export interface PerforItem {
   startDate: string[];
   endDate: string[];
   place: string[];
-  realmName: RealmName[];
+  realmName: RealmNamesType[];
   area: string[];
   thumbnail: string[];
   gpsX: string[];
   gpsY: string[];
 }
-
-export type RealmName =
-  | '건축'
-  | '문화정책'
-  | '무용'
-  | '기타'
-  | '미술'
-  | '문학'
-  | '음악'
-  | '축제문화공간'
-  | '연극'
-  | '영상';
-
 interface PerforInfo {
   area: string[];
   contents1: string[];
@@ -91,7 +78,7 @@ interface PerforInfo {
   placeSeq: string[];
   placeUrl: string[];
   price: string[];
-  realmName: RealmName[];
+  realmName: RealmNamesType[];
   seq: string[];
   startDate: string[];
   subTitle: string[];
