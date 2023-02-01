@@ -9,6 +9,7 @@ interface Props {
   className?: string;
 }
 
+// TODO: 스크롤할때 고정 필요
 function Header({
   title = <Logo />,
   headerLeft,
@@ -31,7 +32,8 @@ const StyledHeader = styled.header`
   justify-content: center;
   height: 56px;
   padding: 16px;
-  border-bottom: 1px solid ${themeVar.highlight};
+  /* border-bottom: 1px solid ${themeVar.highlight}; */
+  background: ${themeVar.header_bg};
 `;
 
 const Title = styled.div`

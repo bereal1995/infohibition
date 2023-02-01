@@ -18,6 +18,7 @@ interface ThemeColors {
   highlight: string;
   outline: string;
   sub_text: string;
+  header_bg: string;
 }
 
 type ThemeColorsKey = keyof ThemeColors;
@@ -42,6 +43,7 @@ const colors: ThemeColors = {
   highlight: '#BCBCBC',
   outline: '#4D4D4D',
   sub_text: '#4D4D4D',
+  header_bg: '#F5F5F5',
 };
 
 const darkColors: ThemeColors = {
@@ -64,6 +66,7 @@ const darkColors: ThemeColors = {
   highlight: '#CCCCCC',
   outline: '#B3B3B3',
   sub_text: '#D9D9D9',
+  header_bg: '#1f1f1f',
 };
 
 function themeToCss(themeSet: ThemeColors) {
