@@ -10,13 +10,13 @@ interface Props {
 }
 
 function HeadMeta({
-  title = 'IH | 국내 공연 정보',
+  title = '국내 공연 정보',
   description = '국내 공연 정보를 한눈에 확인할 수 있는 IH 입니다.',
   image = '',
   url = 'https://www.hhxdragon.com/',
   type = 'website',
 }: Props) {
-  title = unescapeHtml(title);
+  title = `IH | ${unescapeHtml(title)}`;
   description = unescapeHtml(description);
   return (
     <Head>
