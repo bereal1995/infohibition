@@ -1,8 +1,5 @@
 import Header from 'src/components-shared/header';
 import styled from '@emotion/styled';
-import MenuIcon from '@/img/header_menu.svg';
-import SearchIcon from '@/img/search.svg';
-import Button from 'src/components-shared/buttons';
 import ThemeButton from 'src/components-shared/buttons/ThemeButton';
 
 interface Props {
@@ -26,20 +23,20 @@ function TabLayout({
     <>
       <Header
         title={title}
-        headerLeft={
-          headerLeft ?? (
-            <Button>
-              <MenuIcon />
-            </Button>
-          )
-        }
+        // headerLeft={
+        //   headerLeft ?? (
+        //     <Button>
+        //       <MenuIcon />
+        //     </Button>
+        //   )
+        // }
         headerRight={
           headerRight ?? (
             <>
               <ThemeButton />
-              <Button>
+              {/* <Button>
                 <SearchIcon />
-              </Button>
+              </Button> */}
             </>
           )
         }

@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
-
-import { themeVar } from '@/utils/theme';
-import { useRouter } from 'next/router';
-import { useItem } from '@/components-pages/detail/hooks/useItem';
 import Link from 'next/link';
 import moment from 'moment';
 import 'moment/locale/ko';
+import { useRouter } from 'next/router';
 
-// TODO: 컴포넌트 분리할지 고민필요
+import { themeVar } from '@/utils/theme';
+import { useItem } from '@/components-pages/detail/hooks/useItem';
+import HeadMeta from '@/components-shared/seo/HeadMeta';
+
+// TODO: 이미지 최적화 필요
 function DetailContainer() {
   const router = useRouter();
   const { seq } = router.query;
@@ -27,38 +28,48 @@ function DetailContainer() {
     return { __html: text };
   };
 
+  const defaultSeo = {
+    title: perforInfo?.title?.[0],
+    description: `제목: ${perforInfo?.title?.[0]} 기간: ${startDate} ~ ${endDate}장소: ${perforInfo?.place} (${perforInfo?.placeAddr?.[0]})요금: ${perforInfo?.price?.[0]}문의: ${perforInfo?.phone?.[0]}`,
+    image: perforInfo?.imgUrl?.[0],
+    url: `https://www.hhxdragon.com/items/${seq}`,
+  };
+
   return (
-    <Container>
-      <Thumb>
-        <img src={perforInfo?.imgUrl?.[0]} alt={perforInfo?.title?.[0]} />
-      </Thumb>
-      <Content>
-        <TitleWrap>
-          <div>
-            <h2
-              className="text-[18px]"
-              dangerouslySetInnerHTML={createTitle(perforInfo?.title?.[0])}
-            />
-            <span className="text-[12px]">{perforInfo?.subTitle?.[0]}</span>
-          </div>
-          <StyledLink href={perforInfo?.url?.[0] ?? '/'} target="_blank">
-            관람
-          </StyledLink>
-        </TitleWrap>
-        <Info>
-          기간: {startDate} ~ {endDate}
-          <br />
-          장소: {perforInfo?.place} ({perforInfo?.placeAddr?.[0]})
-          <br />
-          요금: {perforInfo?.price?.[0]}
-          <br />
-          문의: {perforInfo?.phone?.[0]}
-          <br />
-          {/* 더보기 */}
-        </Info>
-        <Description>{description}</Description>
-      </Content>
-    </Container>
+    <>
+      <HeadMeta {...defaultSeo} />
+      <Container>
+        <Thumb>
+          <img src={perforInfo?.imgUrl?.[0]} alt={perforInfo?.title?.[0]} />
+        </Thumb>
+        <Content>
+          <TitleWrap>
+            <div>
+              <h2
+                className="text-[18px]"
+                dangerouslySetInnerHTML={createTitle(perforInfo?.title?.[0])}
+              />
+              <span className="text-[12px]">{perforInfo?.subTitle?.[0]}</span>
+            </div>
+            <StyledLink href={perforInfo?.url?.[0] ?? '/'} target="_blank">
+              관람
+            </StyledLink>
+          </TitleWrap>
+          <Info>
+            기간: {startDate} ~ {endDate}
+            <br />
+            장소: {perforInfo?.place} ({perforInfo?.placeAddr?.[0]})
+            <br />
+            요금: {perforInfo?.price?.[0]}
+            <br />
+            문의: {perforInfo?.phone?.[0]}
+            <br />
+            {/* 더보기 */}
+          </Info>
+          <Description>{description}</Description>
+        </Content>
+      </Container>
+    </>
   );
 }
 

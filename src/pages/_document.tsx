@@ -1,7 +1,7 @@
 import { MEDIA, THEME_STORAGE_KEY } from '@/providers/ThemeProvider';
 import { Html, Head, Main, NextScript } from 'next/document';
 
-const createMarkup = (htmlValue: string) => {
+export const createMarkup = (htmlValue: string) => {
   return { __html: htmlValue };
 };
 

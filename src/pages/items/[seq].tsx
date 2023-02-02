@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
+import { dehydrate, QueryClient } from '@tanstack/react-query';
 
 import DetailContainer from '@/components-pages/detail';
 import DetailLayout from '@/components-shared/layouts/DetailLayout';
-import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getItem } from '@/api/items';
 
 export default function DetailPage() {
