@@ -9,11 +9,13 @@ interface Props {
   type?: string;
 }
 
+export const IH_URL = process.env.NEXT_PUBLIC_URL;
+
 function HeadMeta({
   title = '국내 공연 정보',
   description = '국내 공연 정보를 한눈에 확인할 수 있는 IH 입니다.',
-  image = '',
-  url = 'https://www.hhxdragon.com/',
+  image = `${IH_URL}/og-image.png`,
+  url = IH_URL,
   type = 'website',
 }: Props) {
   title = `IH | ${unescapeHtml(title)}`;

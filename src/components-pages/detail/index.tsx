@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import { themeVar } from '@/utils/theme';
 import { useItem } from '@/components-pages/detail/hooks/useItem';
-import HeadMeta from '@/components-shared/seo/HeadMeta';
+import HeadMeta, { IH_URL } from '@/components-shared/seo/HeadMeta';
 
 // TODO: 이미지 최적화 필요
 function DetailContainer() {
@@ -32,7 +32,7 @@ function DetailContainer() {
     title: perforInfo?.title?.[0],
     description: `제목: ${perforInfo?.title?.[0]} 기간: ${startDate} ~ ${endDate}장소: ${perforInfo?.place} (${perforInfo?.placeAddr?.[0]})요금: ${perforInfo?.price?.[0]}문의: ${perforInfo?.phone?.[0]}`,
     image: perforInfo?.imgUrl?.[0],
-    url: `https://www.hhxdragon.com/items/${seq}`,
+    url: `${IH_URL}/${seq}`,
   };
 
   return (

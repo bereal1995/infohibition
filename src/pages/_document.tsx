@@ -1,3 +1,4 @@
+import Favicon from '@/components-shared/seo/Favicon';
 import { MEDIA, THEME_STORAGE_KEY } from '@/providers/ThemeProvider';
 import { Html, Head, Main, NextScript } from 'next/document';
 
@@ -22,7 +23,9 @@ const ThemeScript = () => {
 export default function Document() {
   return (
     <Html>
-      <Head />
+      <Head>
+        <Favicon />
+      </Head>
       <body>
         <ThemeScript />
         <Main />
