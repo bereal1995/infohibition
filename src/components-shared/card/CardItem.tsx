@@ -8,34 +8,31 @@ import { themeVar } from '@/utils/theme';
 import { PerforItem } from '@/types/items';
 interface Props {
   item: PerforItem;
-  onClick?: () => void;
 }
 
-function CardItem({ item, onClick }: Props) {
-  const href = `/items/${item.seq[0]}`;
-  const startDate = moment(item?.startDate?.[0]).format('YYYY.MM.DD(ddd)');
-  const endDate = moment(item?.endDate?.[0]).format('YYYY.MM.DD(ddd)');
+function CardItem({ item }: Props) {
+  const href = `/items/${item.seq}`;
+  const startDate = moment(item?.startDate).format('YYYY.MM.DD(ddd)');
+  const endDate = moment(item?.endDate).format('YYYY.MM.DD(ddd)');
 
   return (
     <Container href={href}>
       <Thumbnail>
         {/* TODO: 이미지 최적화 필요 */}
-        <img src={item.thumbnail[0]} />
+        <img src={item.thumbnail} />
       </Thumbnail>
 
       <Content>
         <PerformanceType>
-          <CardIcon type={item.realmName[0]} />
-          {item.realmName[0]}
+          <CardIcon type={item.realmName} />
+          {item.realmName}
         </PerformanceType>
-        <Title dangerouslySetInnerHTML={{ __html: item.title[0] }} />
+        <Title dangerouslySetInnerHTML={{ __html: item.title }} />
         <Description>
           <span>
             기간: {startDate} ~ {endDate} <br />
           </span>
-          <span>
-            장소: {(item.area[0] && item.area[0] + ' ') + item.place[0]}
-          </span>
+          <span>장소: {(item.area && item.area + ' ') + item.place}</span>
         </Description>
       </Content>
     </Container>

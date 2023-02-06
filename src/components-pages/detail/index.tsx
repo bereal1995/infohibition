@@ -13,14 +13,12 @@ function DetailContainer() {
   const router = useRouter();
   const { seq } = router.query;
   const { data } = useItem(seq as string);
-  const perforInfo = data?.perforInfo?.[0];
-  const startDate = moment(perforInfo?.startDate?.[0]).format(
-    'YYYY.MM.DD(ddd)'
-  );
-  const endDate = moment(perforInfo?.endDate?.[0]).format('YYYY.MM.DD(ddd)');
+  const perforInfo = data?.perforInfo;
+  const startDate = moment(perforInfo?.startDate).format('YYYY.MM.DD(ddd)');
+  const endDate = moment(perforInfo?.endDate).format('YYYY.MM.DD(ddd)');
 
-  const description = perforInfo?.contents1?.[0]
-    ? perforInfo?.contents1?.[0] + perforInfo?.contents2?.[0]
+  const description = perforInfo?.contents1
+    ? perforInfo?.contents1 + perforInfo?.contents2
     : '등록된 내용이 없습니다.';
 
   const createTitle = (text?: string) => {
@@ -29,9 +27,9 @@ function DetailContainer() {
   };
 
   const defaultSeo = {
-    title: perforInfo?.title?.[0],
-    description: `제목: ${perforInfo?.title?.[0]} 기간: ${startDate} ~ ${endDate}장소: ${perforInfo?.place} (${perforInfo?.placeAddr?.[0]})요금: ${perforInfo?.price?.[0]}문의: ${perforInfo?.phone?.[0]}`,
-    image: perforInfo?.imgUrl?.[0],
+    title: perforInfo?.title,
+    description: `제목: ${perforInfo?.title} 기간: ${startDate} ~ ${endDate}장소: ${perforInfo?.place} (${perforInfo?.placeAddr})요금: ${perforInfo?.price}문의: ${perforInfo?.phone}`,
+    image: perforInfo?.imgUrl,
     url: `${IH_URL}/${seq}`,
   };
 
@@ -40,29 +38,29 @@ function DetailContainer() {
       <HeadMeta {...defaultSeo} />
       <Container>
         <Thumb>
-          <img src={perforInfo?.imgUrl?.[0]} alt={perforInfo?.title?.[0]} />
+          <img src={perforInfo?.imgUrl} alt={perforInfo?.title} />
         </Thumb>
         <Content>
           <TitleWrap>
             <div>
               <h2
                 className="text-[18px]"
-                dangerouslySetInnerHTML={createTitle(perforInfo?.title?.[0])}
+                dangerouslySetInnerHTML={createTitle(perforInfo?.title)}
               />
-              <span className="text-[12px]">{perforInfo?.subTitle?.[0]}</span>
+              <span className="text-[12px]">{perforInfo?.subTitle}</span>
             </div>
-            <StyledLink href={perforInfo?.url?.[0] ?? '/'} target="_blank">
+            <StyledLink href={perforInfo?.url ?? '/'} target="_blank">
               관람
             </StyledLink>
           </TitleWrap>
           <Info>
             기간: {startDate} ~ {endDate}
             <br />
-            장소: {perforInfo?.place} ({perforInfo?.placeAddr?.[0]})
+            장소: {perforInfo?.place} ({perforInfo?.placeAddr})
             <br />
-            요금: {perforInfo?.price?.[0]}
+            요금: {perforInfo?.price}
             <br />
-            문의: {perforInfo?.phone?.[0]}
+            문의: {perforInfo?.phone}
             <br />
             {/* 더보기 */}
           </Info>

@@ -20,10 +20,11 @@ export default async function handler(
 
   const response = await fetch(url);
   const xmlData = await response.text();
+
   let data = {};
-  const parser = new xml2js.Parser();
+  const parser = new xml2js.Parser({ explicitArray: false });
   parser.parseString(xmlData, (err, result) => {
-    data = result?.response?.msgBody[0] as PerformanceDisplay;
+    data = result?.response?.msgBody as PerformanceDisplay;
   });
 
   res.status(200).json({ ...data });

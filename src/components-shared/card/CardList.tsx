@@ -13,7 +13,7 @@ function CardList({ items }: Props) {
   return (
     <Container>
       {items.map((item) => (
-        <CardItem key={item.seq[0]} item={item} />
+        <CardItem key={item.seq} item={item} />
       ))}
     </Container>
   );

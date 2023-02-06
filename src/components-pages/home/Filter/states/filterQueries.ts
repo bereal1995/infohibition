@@ -4,7 +4,7 @@ import { shallow } from 'zustand/shallow';
 import produce from 'immer';
 
 import { FilterQueries } from '@/components-pages/home/hooks/useFilterQuery';
-import { RealmCodesType, SortType } from '@/constants/items';
+import { RealmCodesType, SortStdrKeys } from '@/constants/items';
 import moment from 'moment';
 
 interface FilterQueriesState {
@@ -60,7 +60,7 @@ export const useFilterQueriesStore = create<FilterQueriesState>()(
           })
         );
       },
-      setSortQuery: (sortStdr: SortType) => {
+      setSortQuery: (sortStdr: SortStdrKeys) => {
         set(
           produce((state) => {
             state.queries.sortStdr = sortStdr;

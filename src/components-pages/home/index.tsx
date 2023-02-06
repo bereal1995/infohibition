@@ -29,8 +29,9 @@ function HomeContainer() {
     (acc, page) => [...acc, ...(page?.perforList ?? [])],
     []
   );
+
   const { totalCount } = data?.pages.at(0) ?? {};
-  const isLastPage = Number(totalCount?.[0] ?? 0) === listData?.length ?? 0;
+  const isLastPage = Number(totalCount ?? 0) === listData?.length ?? 0;
 
   return (
     <Container>
