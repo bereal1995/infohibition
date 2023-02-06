@@ -6,20 +6,25 @@ import { motion } from 'framer-motion';
 import FilterDatePicker from '@/components-pages/home/Filter/FilterDatePicker';
 import { useFilterQueriesActions } from '@/components-pages/home/Filter/states/filterQueries';
 import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
-import { SORT_NAMES } from '@/constants/items';
 import { themeVar } from '@/utils/theme';
+import {
+  PERIODS,
+  PeriodValue,
+  SortListValue,
+  SORT_LIST,
+} from '@/constants/filter';
 
-interface FilterIndicatorProps {
-  list: Record<string, string>[];
-  activeValue: string;
-  onClickIndicator: (value: string) => void;
+interface FilterIndicatorProps<T> {
+  list: readonly { readonly name: string; readonly value: T }[];
+  activeValue: T;
+  onClickIndicator: (value: T) => void;
 }
 
-function FilterIndicator({
+function FilterIndicator<T>({
   list,
   activeValue,
   onClickIndicator,
-}: FilterIndicatorProps) {
+}: FilterIndicatorProps<T>) {
   const activeIndex = list.findIndex((item) => item.value === activeValue);
   const indicatorLeft = `${33.3 * activeIndex}%`;
 
@@ -28,7 +33,7 @@ function FilterIndicator({
       <Indicator layout style={{ left: indicatorLeft, width: '33.3%' }} />
       {list.map(({ name, value }) => (
         <FilterButton
-          key={value}
+          key={name}
           active={activeValue === value}
           onClick={() => onClickIndicator(value)}
         >
@@ -39,27 +44,13 @@ function FilterIndicator({
   );
 }
 
-const PERIODS = [
-  {
-    name: '1개월',
-    value: '1',
-  },
-  {
-    name: '3개월',
-    value: '3',
-  },
-  {
-    name: '직접입력',
-    value: 'custom',
-  },
-];
 export function FilterPeriod() {
   const { queries } = useFilterQuery();
   const defaultMonth = queries.month;
   const [month, setMonth] = useState(defaultMonth);
   const { setMonthQuery } = useFilterQueriesActions();
 
-  const onClickIndicator = (value: string) => {
+  const onClickIndicator = (value: PeriodValue) => {
     if (month === value) return;
 
     setMonthQuery(value);
@@ -77,17 +68,13 @@ export function FilterPeriod() {
   );
 }
 
-const SORT_LIST = Object.entries(SORT_NAMES).map(([value, name]) => ({
-  value,
-  name,
-}));
 export function FilterSortStdr() {
   const { queries } = useFilterQuery();
   const defaultSortStdr = queries.sortStdr;
-  const [sortStdr, setSortStdr] = useState<string>(defaultSortStdr);
+  const [sortStdr, setSortStdr] = useState(defaultSortStdr);
   const { setSortQuery } = useFilterQueriesActions();
 
-  const onClickIndicator = (value: string) => {
+  const onClickIndicator = (value: SortListValue) => {
     if (sortStdr === value) return;
 
     setSortQuery(value);

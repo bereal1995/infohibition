@@ -5,7 +5,7 @@ import moment from 'moment';
 import { registerLocale } from 'react-datepicker';
 
 import FilterIcon from '@/img/filter_icon.svg';
-import { REALM_ALL, REALM_OBJ, SORT_NAMES } from '@/constants/items';
+import { REALM_ALL, REALM_OBJ, SORT_STDR } from '@/constants/items';
 import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
 import { useBottomSheetModalActions } from '@/states/bottomSheetModal';
 import FilterContent from '@/components-pages/home/Filter/FilterContent';
@@ -17,7 +17,7 @@ function ListFilter() {
   const { setQueries } = useFilterQueriesActions();
   const { month, realmCode, sortStdr, to, from } = queries;
   const realmName = realmCode ? REALM_OBJ[realmCode] : REALM_ALL.name;
-  const sortName = SORT_NAMES[sortStdr];
+  const sortName = SORT_STDR[sortStdr];
   const monthName =
     decodeURIComponent(month) === 'custom' ? `${from} ~ ${to}` : `${month}개월`;
 

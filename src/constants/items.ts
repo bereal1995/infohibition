@@ -20,9 +20,10 @@ export type RealmCodesType = keyof typeof REALM_OBJ;
 export const REALM_NAMES = Object.values(REALM_OBJ) as RealmNamesType[];
 export type RealmNamesType = typeof REALM_OBJ[keyof typeof REALM_OBJ];
 
-export const SORT_NAMES = {
-  ['1']: '등록일순',
-  ['2']: '공연명순',
-  ['3']: '지역순',
+export const SORT_STDR = {
+  '1': '등록일순',
+  '2': '공연명순',
+  '3': '지역순',
 } as const;
-export type SortType = keyof typeof SORT_NAMES;
+export type SortStdrKeys = keyof typeof SORT_STDR;
+export type SortStdrNames = typeof SORT_STDR[keyof typeof SORT_STDR];

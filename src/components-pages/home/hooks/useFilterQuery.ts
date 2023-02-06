@@ -2,11 +2,11 @@ import { useRouter } from 'next/router';
 
 import { PerformanceType } from '@/types/items';
 import { asPathToObjectQuery } from '@/utils/api';
-import { RealmCodesType, SortType } from '@/constants/items';
+import { RealmCodesType, SortStdrKeys } from '@/constants/items';
 
 export interface FilterQueries {
-  month: string;
-  sortStdr: SortType;
+  month: '1' | '3' | 'custom';
+  sortStdr: SortStdrKeys;
   realmCode?: RealmCodesType;
   to?: string;
   from?: string;
@@ -33,7 +33,7 @@ export const useFilterQuery = () => {
     sortStdr,
     from,
     to,
-  };
+  } as FilterQueries;
 
   return { queries, type };
 };
