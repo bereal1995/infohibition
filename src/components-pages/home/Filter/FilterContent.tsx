@@ -66,7 +66,7 @@ const Container = styled.div`
 `;
 
 const PeriodContainer = styled.div`
-  overflow: scroll;
+  overflow: auto;
 `;
 
 const StyledButton = styled(Button)`
