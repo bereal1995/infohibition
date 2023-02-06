@@ -15,6 +15,7 @@ import ScrollRemember from '@/components-shared/system/ScrollRemember';
 import GlobalBottomSheetModal from '@/components-shared/bottomSheetModal/GlobalBottomSheetModal';
 import 'react-datepicker/dist/react-datepicker.css';
 import HeadMeta from '@/components-shared/seo/HeadMeta';
+import GoogleAnalytics from '@/components-shared/seo/GoogleAnalytics';
 
 const notoSansKr = Noto_Sans_KR({
   weight: '400',
@@ -42,6 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider>
+            <GoogleAnalytics />
             <Component {...pageProps} />
             <GlobalStyle />
             <ScrollRemember />

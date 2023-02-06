@@ -1,6 +1,7 @@
+import { Html, Head, Main, NextScript } from 'next/document';
+
 import Favicon from '@/components-shared/seo/Favicon';
 import { MEDIA, THEME_STORAGE_KEY } from '@/providers/ThemeProvider';
-import { Html, Head, Main, NextScript } from 'next/document';
 
 export const createMarkup = (htmlValue: string) => {
   return { __html: htmlValue };
@@ -30,6 +31,17 @@ export default function Document() {
         <ThemeScript />
         <Main />
         <NextScript />
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        {/* Necessary to prevent error: window.gtag is not defined for Next.js-hydration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `,
+          }}
+        />
       </body>
     </Html>
   );
