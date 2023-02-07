@@ -1,6 +1,5 @@
 import Header from 'src/components-shared/header';
 import styled from '@emotion/styled';
-import ThemeButton from 'src/components-shared/buttons/ThemeButton';
 
 interface Props {
   headerLeft?: React.ReactNode;
@@ -30,16 +29,7 @@ function TabLayout({
         //     </Button>
         //   )
         // }
-        headerRight={
-          headerRight ?? (
-            <>
-              <ThemeButton />
-              {/* <Button>
-                <SearchIcon />
-              </Button> */}
-            </>
-          )
-        }
+        headerRight={headerRight}
       />
       <Content className={className}>{children}</Content>
       {/* <Footer /> */}

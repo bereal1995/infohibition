@@ -18,7 +18,7 @@ interface Props {
  * 헤더에는 뒤로가기 버튼이 있음
  * 헤더에는 타이틀이 있음
  */
-function BasicLayout({
+function DetailLayout({
   hasBackButton,
   title,
   headerRight,
@@ -50,4 +50,4 @@ const Content = styled.div`
   flex: 1;
 `;
 
-export default BasicLayout;
+export default DetailLayout;
