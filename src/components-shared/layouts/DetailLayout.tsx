@@ -5,6 +5,7 @@ import { useGoBack } from '@/hooks/useGoBack';
 import HeaderBackButton from '@/components-shared/buttons/HeaderBackButton';
 
 interface Props {
+  className?: string;
   hasBackButton?: boolean;
   title?: React.ReactNode;
   headerRight?: React.ReactNode;
@@ -19,6 +20,7 @@ interface Props {
  * 헤더에는 타이틀이 있음
  */
 function DetailLayout({
+  className,
   hasBackButton,
   title,
   headerRight,
@@ -30,6 +32,7 @@ function DetailLayout({
   return (
     <>
       <Header
+        className={className}
         title={title}
         headerLeft={
           hasBackButton ? (

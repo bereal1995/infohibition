@@ -22,10 +22,10 @@ const IconButton = styled.button`
   margin: -8px;
   border: none;
   background: none;
-  svg {
+  /* svg {
     width: 24px;
     height: 24px;
-  }
+  } */
 `;
 
 export default HeaderBackButton;

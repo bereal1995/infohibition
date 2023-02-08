@@ -17,7 +17,7 @@ export interface FilterQueries {
  */
 export const useFilterQuery = () => {
   const { asPath } = useRouter();
-  const query = asPathToObjectQuery(asPath);
+  const query = asPathToObjectQuery<FilterQueries>(asPath);
   const {
     month = '1',
     sortStdr = '1',

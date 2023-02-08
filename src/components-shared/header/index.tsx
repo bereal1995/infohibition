@@ -1,7 +1,7 @@
+import styled from '@emotion/styled';
+
 import Logo from '@/img/logo.svg';
 import { themeVar } from '@/utils/theme';
-import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
 
 interface Props {
   title?: React.ReactNode;
@@ -17,18 +17,10 @@ function Header({
   headerRight,
   className,
 }: Props) {
-  const router = useRouter();
-
-  const handleClickLogo = () => {
-    router.push('/');
-  };
-
   return (
     <StyledHeader className={className}>
       {headerLeft && <HeaderSide position="left">{headerLeft}</HeaderSide>}
-      <Title className="ih-title" onClick={handleClickLogo}>
-        {title}
-      </Title>
+      <Title className="ih-title">{title}</Title>
       {headerRight && <HeaderSide position="right">{headerRight}</HeaderSide>}
     </StyledHeader>
   );

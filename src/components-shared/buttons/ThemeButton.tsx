@@ -28,10 +28,10 @@ const StyledButton = styled(Button)`
   justify-content: center;
   width: 40px;
   height: 40px;
-  svg {
+  /* svg {
     width: 24px;
     height: 24px;
-  }
+  } */
 `;
 
 export default ThemeButton;

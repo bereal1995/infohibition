@@ -5,14 +5,14 @@ export function objectToQueryStr(params: any) {
     .join('&');
 }
 
-export function asPathToObjectQuery(asPath: string) {
+export function asPathToObjectQuery<T>(asPath: string): T {
   const query = asPath.split('?')[1];
-  if (!query) return {};
+  if (!query) return {} as T;
   const params = query.split('&');
-  const result: any = {};
+  const result: T = {} as T;
   params.forEach((param) => {
     const [key, value] = param.split('=');
-    result[key] = value;
+    (result as any)[key] = value;
   });
   return result;
 }

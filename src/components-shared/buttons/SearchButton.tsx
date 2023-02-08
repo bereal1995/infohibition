@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
+
 import Button from '@/components-shared/buttons';
 import SearchIcon from '@/img/search.svg';
-import { useRouter } from 'next/router';
+import styled from '@emotion/styled';
 
 function SearchButton() {
   const router = useRouter();
@@ -10,10 +12,17 @@ function SearchButton() {
   };
 
   return (
-    <Button onClick={handleClick}>
+    <StyledButton onClick={handleClick}>
       <SearchIcon />
-    </Button>
+    </StyledButton>
   );
 }
+
+const StyledButton = styled(Button)`
+  svg {
+    width: 21px;
+    height: 21px;
+  }
+`;
 
 export default SearchButton;
