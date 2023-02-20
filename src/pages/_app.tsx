@@ -27,7 +27,18 @@ const roboto = Roboto({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+            staleTime: 1000 * 60 * 60,
+            cacheTime: 1000 * 60 * 60,
+          },
+        },
+      })
+  );
 
   return (
     <>
