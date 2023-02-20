@@ -33,6 +33,30 @@ export const getItems = async (
   return result.data;
 };
 
+export const getSearchItems = async ({
+  keyword,
+  cPage,
+}: {
+  keyword: string;
+  cPage: number;
+}) => {
+  const result = await client.get(`/items`, {
+    params: {
+      ServiceKey: SERVICE_KEY,
+      type: 'period',
+      rows: 10,
+      place: '',
+      gpsxfrom: '',
+      gpsyfrom: '',
+      gpsxto: '',
+      gpsyto: '',
+      keyword,
+      cPage,
+    },
+  });
+  return result.data;
+};
+
 export const getItem = async (seq: string) => {
   const result = await client.get<PerforInfoItem>(`/items/${seq}`, {
     params: {
