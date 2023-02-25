@@ -9,7 +9,6 @@ import ListFilter from '@/components-pages/home/Filter';
 import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
 import { removeEmptyValue } from '@/utils/api';
 
-// TODO: 에러바운더리 적용할때 데이터 정리 필요
 function HomeContainer() {
   const { queries, type } = useFilterQuery();
   const params = removeEmptyValue(queries);
@@ -36,7 +35,7 @@ function HomeContainer() {
   return (
     <Container>
       <ListFilter />
-      {listData ? <CardList items={listData} /> : <Spinner />}
+      <CardList items={listData} />
       {!isLastPage && <div ref={ref} className="h-px" />}
       {isFetchingNextPage && (
         <div className="relative h-[24px]">
