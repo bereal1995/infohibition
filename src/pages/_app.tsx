@@ -16,6 +16,8 @@ import GlobalBottomSheetModal from '@/components-shared/bottomSheetModal/GlobalB
 import 'react-datepicker/dist/react-datepicker.css';
 import HeadMeta from '@/components-shared/seo/HeadMeta';
 import GoogleAnalytics from '@/components-shared/seo/GoogleAnalytics';
+import useUnhandledRejectionError from '@/hooks/useUnhandledRejectionError';
+import { captureUnhandledRejection } from '@/lib/sentry';
 
 const notoSansKr = Noto_Sans_KR({
   weight: '400',
@@ -39,6 +41,10 @@ export default function App({ Component, pageProps }: AppProps) {
         },
       })
   );
+
+  useUnhandledRejectionError(({ reason: error }) => {
+    captureUnhandledRejection(error);
+  });
 
   return (
     <>
