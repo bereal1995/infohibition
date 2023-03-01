@@ -16,6 +16,7 @@ const nextConfig = {
 
 const sentryWebpackPluginOptions = {
   silent: true,
+  dryRun: process.env.VERCEL_ENV !== 'production',
 };
 
 module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
