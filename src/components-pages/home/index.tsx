@@ -6,16 +6,21 @@ import { useIntersect } from '@/hooks/useIntersect';
 import CardList from '@/components-shared/card/CardList';
 import { PerforItem } from '@/types/items';
 import ListFilter from '@/components-pages/home/Filter';
-import { useFilterQuery } from '@/components-pages/home/hooks/useFilterQuery';
+import {
+  FilterQueries,
+  useFilterQuery,
+} from '@/components-pages/home/hooks/useFilterQuery';
 import { removeEmptyValue } from '@/utils/api';
 
 function HomeContainer() {
   const { queries, type } = useFilterQuery();
-  const params = removeEmptyValue(queries);
+  const params = removeEmptyValue<FilterQueries>(queries);
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteItems(
     type,
     params
   );
+
+  console.log('data', data);
 
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);

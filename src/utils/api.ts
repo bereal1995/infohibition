@@ -7,9 +7,11 @@ export function objectToQueryStr(params: any) {
 
 export function asPathToObjectQuery<T>(asPath: string): T {
   const query = asPath.split('?')[1];
-  if (!query) return {} as T;
+  const result = {} as T;
+
+  if (!query) return result;
+
   const params = query.split('&');
-  const result: T = {} as T;
   params.forEach((param) => {
     const [key, value] = param.split('=');
     (result as any)[key] = value;
@@ -17,11 +19,11 @@ export function asPathToObjectQuery<T>(asPath: string): T {
   return result;
 }
 
-export function removeEmptyValue(obj: any) {
-  const result: any = {};
+export function removeEmptyValue<T>(obj: any) {
+  const result = {} as T;
   Object.keys(obj).forEach((key) => {
     if (obj[key] !== undefined && obj[key] !== null && obj[key] !== '') {
-      result[key] = obj[key];
+      (result as any)[key] = obj[key];
     }
   });
   return result;
