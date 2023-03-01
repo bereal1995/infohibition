@@ -51,6 +51,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  max-width: 450px;
+  margin: 0 auto;
 `;
 
 export default DetailLayout;

@@ -57,7 +57,7 @@ const Thumbnail = styled.div`
   width: 100%;
   img {
     width: 100%;
-    transform: scale(1.01);
+    transform: scale(1.02);
   }
 `;
 

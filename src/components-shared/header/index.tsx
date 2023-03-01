@@ -19,22 +19,29 @@ function Header({
 }: Props) {
   return (
     <StyledHeader className={className}>
-      {headerLeft && <HeaderSide position="left">{headerLeft}</HeaderSide>}
-      <Title className="ih-title">{title}</Title>
-      {headerRight && <HeaderSide position="right">{headerRight}</HeaderSide>}
+      <HeaderInner>
+        {headerLeft && <HeaderSide position="left">{headerLeft}</HeaderSide>}
+        <Title className="ih-title">{title}</Title>
+        {headerRight && <HeaderSide position="right">{headerRight}</HeaderSide>}
+      </HeaderInner>
     </StyledHeader>
   );
 }
 
 const StyledHeader = styled.header`
+  /* border-bottom: 1px solid ${themeVar.highlight}; */
+  background: ${themeVar.header_bg};
+`;
+
+const HeaderInner = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 450px;
   height: 56px;
   padding: 16px;
-  /* border-bottom: 1px solid ${themeVar.highlight}; */
-  background: ${themeVar.header_bg};
+  margin: 0 auto;
 `;
 
 const Title = styled.div`

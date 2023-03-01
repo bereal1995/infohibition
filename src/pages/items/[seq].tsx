@@ -18,9 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const queryClient = new QueryClient();
 
   const { seq } = ctx.query;
-  await queryClient.prefetchInfiniteQuery(['item', seq], () =>
-    getItem(seq as string)
-  );
+  await queryClient.prefetchQuery(['item', seq], () => getItem(seq as string));
 
   return {
     props: {
