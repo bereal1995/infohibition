@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Link from 'next/link';
 import moment from 'moment';
 import 'moment/locale/ko';
 import { useRouter } from 'next/router';
@@ -25,6 +24,7 @@ function DetailContainer() {
     if (!text) return;
     return { __html: text };
   };
+  const linkUrl = !perforInfo?.url ? perforInfo?.placeUrl : perforInfo?.url;
 
   const defaultSeo = {
     title: perforInfo?.title,
@@ -49,7 +49,7 @@ function DetailContainer() {
               />
               <span className="text-[12px]">{perforInfo?.subTitle}</span>
             </div>
-            <StyledLink href={perforInfo?.url ?? '/'} target="_blank">
+            <StyledLink href={linkUrl} target="_blank">
               관람
             </StyledLink>
           </TitleWrap>
@@ -108,7 +108,7 @@ const TitleWrap = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
