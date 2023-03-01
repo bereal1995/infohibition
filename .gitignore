@@ -37,3 +37,8 @@ next-env.d.ts
 
 # Sentry
 .sentryclirc
+
+# cypress
+cypress/videos
+cypress/screenshots
+.nyc_output
