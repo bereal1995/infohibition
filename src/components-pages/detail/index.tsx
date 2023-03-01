@@ -71,7 +71,9 @@ function DetailContainer() {
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 0 16px;
+`;
 
 const Thumb = styled.div`
   overflow: hidden;
@@ -86,7 +88,6 @@ const Thumb = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
 `;
 
 const TitleWrap = styled.div`
