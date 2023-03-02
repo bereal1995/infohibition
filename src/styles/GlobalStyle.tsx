@@ -26,6 +26,12 @@ export default function GlobalStyle() {
           body[data-mode='dark'] {
             ${themeCss.dark};
           }
+          input[type='text']:focus,
+          input[type='password']:focus,
+          textarea:focus,
+          select:focus {
+            font-size: 16px;
+          }
         `}
       </style>
     </>
