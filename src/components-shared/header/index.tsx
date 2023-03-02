@@ -29,8 +29,11 @@ function Header({
 }
 
 const StyledHeader = styled.header`
+  position: sticky;
+  top: 0;
   /* border-bottom: 1px solid ${themeVar.highlight}; */
   background: ${themeVar.header_bg};
+  z-index: 100;
 `;
 
 const HeaderInner = styled.div`
