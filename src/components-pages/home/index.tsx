@@ -20,8 +20,6 @@ function HomeContainer() {
     params
   );
 
-  console.log('data', data);
-
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
     if (!isFetchingNextPage) {
