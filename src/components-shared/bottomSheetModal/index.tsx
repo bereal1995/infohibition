@@ -44,6 +44,8 @@ const Positioner = styled.div`
 const Sheet = styled(motion.div)`
   background: white;
   width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 `;
