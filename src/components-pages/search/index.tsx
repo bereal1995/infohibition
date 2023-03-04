@@ -12,7 +12,7 @@ import { useInfiniteSearchItems } from '@/components-pages/search/hooks/useItems
 
 function SearchContainer() {
   const searchText = useSearchStore(searchTextSelector);
-  const { data, fetchNextPage, isFetchingNextPage } =
+  const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteSearchItems(searchText);
   const isEmpty = !searchText;
 
@@ -25,18 +25,18 @@ function SearchContainer() {
 
   const listData: PerforItem[] = isEmpty
     ? []
-    : data?.pages?.reduce(
-        (acc, page) => [...acc, ...(page?.perforList ?? [])],
-        []
-      );
-  const { totalCount } = data?.pages.at(0) ?? {};
-  const isLastPage = Number(totalCount ?? 0) === listData?.length ?? 0;
+    : data?.pages.reduce((acc, { perforList }) => {
+        if (!Array.isArray(perforList)) {
+          return [...acc, perforList];
+        }
+        return [...acc, ...perforList];
+      }, []);
 
   return (
     <Container>
-      {listData ? <CardList items={listData} /> : <Spinner />}
-      {!isLastPage && <div ref={ref} className="h-px" />}
-      {!isEmpty && isFetchingNextPage && (
+      <CardList items={listData} />
+      {hasNextPage && <div ref={ref} className="h-px" />}
+      {isFetchingNextPage && (
         <div className="relative h-[24px]">
           <Spinner />
         </div>

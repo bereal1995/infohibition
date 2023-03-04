@@ -11,11 +11,10 @@ export function asPathToObjectQuery<T>(asPath: string): T {
 
   if (!query) return result;
 
-  const params = query.split('&');
-  params.forEach((param) => {
-    const [key, value] = param.split('=');
+  new URLSearchParams(query).forEach((value, key) => {
     (result as any)[key] = value;
   });
+
   return result;
 }
 

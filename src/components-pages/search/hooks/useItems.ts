@@ -14,5 +14,7 @@ export const useInfiniteSearchItems = (keyword: string) => {
       return nextPage <= totalPage ? nextPage : false;
     },
     enabled: !!keyword,
+    suspense: true,
+    useErrorBoundary: true,
   });
 };

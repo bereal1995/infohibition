@@ -15,10 +15,8 @@ import { removeEmptyValue } from '@/utils/api';
 function HomeContainer() {
   const { queries, type } = useFilterQuery();
   const params = removeEmptyValue<FilterQueries>(queries);
-  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteItems(
-    type,
-    params
-  );
+  const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useInfiniteItems(type, params);
 
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
@@ -27,19 +25,18 @@ function HomeContainer() {
     }
   });
 
-  const listData: PerforItem[] = data?.pages?.reduce(
-    (acc, page) => [...acc, ...(page?.perforList ?? [])],
-    []
-  );
-
-  const { totalCount } = data?.pages.at(0) ?? {};
-  const isLastPage = Number(totalCount ?? 0) === listData?.length ?? 0;
+  const listData: PerforItem[] = data?.pages.reduce((acc, { perforList }) => {
+    if (!Array.isArray(perforList)) {
+      return [...acc, perforList];
+    }
+    return [...acc, ...perforList];
+  }, []);
 
   return (
     <Container>
       <ListFilter />
       <CardList items={listData} />
-      {!isLastPage && <div ref={ref} className="h-px" />}
+      {hasNextPage && <div ref={ref} className="h-px" />}
       {isFetchingNextPage && (
         <div className="relative h-[24px]">
           <Spinner />
