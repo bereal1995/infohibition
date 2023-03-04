@@ -1,4 +1,4 @@
-import { getServerSideSitemapIndexLegacy } from 'next-sitemap';
+import { getServerSideSitemapLegacy } from 'next-sitemap';
 import { GetServerSideProps } from 'next';
 
 import { removeEmptyValue } from '@/utils/api';
@@ -19,12 +19,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const type: PerformanceType = realmCode ? 'realm' : 'period';
 
   const res = await getItems(type, params);
+
   const fields = res?.perforList?.map((item: any) => ({
     loc: `https://infohibition.bereal95.com/items/${item?.seq}`,
-    lastmod: new Date(item?.regDt).toISOString(),
+    lastmod: new Date().toISOString(),
   }));
 
-  return getServerSideSitemapIndexLegacy(ctx, fields);
+  return getServerSideSitemapLegacy(ctx, fields);
 };
 
 // Default export to prevent next.js errors
