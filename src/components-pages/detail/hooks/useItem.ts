@@ -5,4 +5,6 @@ export const useItem = (seq: string) =>
   useQuery({
     queryKey: ['item', seq],
     queryFn: () => getItem(seq),
+    suspense: true,
+    useErrorBoundary: true,
   });
