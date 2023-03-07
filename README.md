@@ -3,7 +3,7 @@
 전시회를 뜻하는 Exhibition과 정보를 뜻하는 Information의 합성어로, 정보를 전시하는 공간을 의미합니다.  
 공공API와 Next.js로 구축하였습니다.
 
-구경하러 가기 -> <https://infohibition.bereal95.com>{: target="_blank"}
+구경하러 가기 -> <https://infohibition.bereal95.com>
 
 ## 전제 조건
 
