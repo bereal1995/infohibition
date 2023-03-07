@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app';
-import { Noto_Sans_KR, Roboto } from '@next/font/google';
 import {
   Hydrate,
   QueryClient,
@@ -18,15 +17,6 @@ import HeadMeta from '@/components-shared/seo/HeadMeta';
 import GoogleAnalytics from '@/components-shared/seo/GoogleAnalytics';
 import useUnhandledRejectionError from '@/hooks/useUnhandledRejectionError';
 import { captureUnhandledRejection } from '@/lib/sentry';
-
-const notoSansKr = Noto_Sans_KR({
-  weight: '400',
-  subsets: ['latin'],
-});
-const roboto = Roboto({
-  weight: ['400', '500'],
-  subsets: ['latin'],
-});
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -51,8 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <style jsx global>
         {`
           html {
-            font-family: ${roboto.style.fontFamily},
-              ${notoSansKr.style.fontFamily};
+            font-family: 'Roboto', 'Noto Sans KR', sans-serif;
           }
         `}
       </style>
