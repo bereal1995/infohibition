@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import Image from 'next/image';
 import moment from 'moment';
 import 'moment/locale/ko';
 
@@ -18,8 +19,12 @@ function CardItem({ item }: Props) {
   return (
     <Container href={href}>
       <Thumbnail>
-        {/* TODO: 이미지 최적화 필요 */}
-        <img src={item.thumbnail} />
+        <Image
+          src={item.thumbnail.replace('http', 'https')}
+          alt={item.title}
+          width={300}
+          height={200}
+        />
       </Thumbnail>
 
       <Content>

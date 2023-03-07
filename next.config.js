@@ -3,6 +3,9 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['www.culture.go.kr'],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -17,6 +20,7 @@ const nextConfig = {
 const sentryWebpackPluginOptions = {
   silent: true,
   dryRun: process.env.VERCEL_ENV !== 'production',
+  hideSourceMaps: true,
 };
 
 module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);

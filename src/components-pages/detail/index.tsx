@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 import moment from 'moment';
 import 'moment/locale/ko';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import { themeVar } from '@/utils/theme';
 import { useItem } from '@/components-pages/detail/hooks/useItem';
 import HeadMeta, { IH_URL } from '@/components-shared/seo/HeadMeta';
 
-// TODO: 이미지 최적화 필요
 function DetailContainer() {
   const router = useRouter();
   const { seq } = router.query;
@@ -38,7 +38,12 @@ function DetailContainer() {
       <HeadMeta {...defaultSeo} />
       <Container>
         <Thumb>
-          <img src={perforInfo?.imgUrl} alt={perforInfo?.title} />
+          <Image
+            src={perforInfo?.imgUrl.replace('http', 'https') ?? ''}
+            alt={perforInfo?.title ?? ''}
+            width={300}
+            height={200}
+          />
         </Thumb>
         <Content>
           <TitleWrap>
