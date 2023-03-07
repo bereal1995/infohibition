@@ -12,6 +12,13 @@ interface Props {
 function BottomSheetModal({ visible, onClose, content }: Props) {
   return (
     <>
+      <style global jsx>
+        {`
+          body {
+            overflow: ${visible ? 'hidden' : 'auto'};
+          }
+        `}
+      </style>
       <Overlay visible={visible} onClick={onClose} />
       <Positioner>
         <AnimatePresence>
