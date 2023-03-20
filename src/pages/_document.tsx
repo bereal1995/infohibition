@@ -36,6 +36,18 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&family=Roboto:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"
         />
+        {
+          // Google AddSense
+          process.env.NODE_ENV === 'production' && (
+            <>
+              <script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1030651127007158"
+                crossOrigin="anonymous"
+              />
+            </>
+          )
+        }
       </Head>
       <body>
         <ThemeScript />
