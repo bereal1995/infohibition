@@ -26,6 +26,9 @@ function SearchContainer() {
   const listData: PerforItem[] = isEmpty
     ? []
     : data?.pages.reduce((acc, { perforList }) => {
+        if (!perforList) {
+          return acc;
+        }
         if (!Array.isArray(perforList)) {
           return [...acc, perforList];
         }
