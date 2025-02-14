@@ -31,6 +31,7 @@ function DetailContainer() {
     description: `제목: ${perforInfo?.title} 기간: ${startDate} ~ ${endDate}장소: ${perforInfo?.place} (${perforInfo?.placeAddr})요금: ${perforInfo?.price}문의: ${perforInfo?.phone}`,
     image: perforInfo?.imgUrl,
     url: `${IH_URL}/${seq}`,
+    keywords: `공연 정보, ${perforInfo?.title}, ${perforInfo?.place}`,
   };
 
   return (

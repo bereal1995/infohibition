@@ -7,16 +7,18 @@ interface Props {
   image?: string;
   url?: string;
   type?: string;
+  keywords?: string;
 }
 
 export const IH_URL = process.env.NEXT_PUBLIC_URL;
 
 function HeadMeta({
-  title = '국내 공연 정보',
-  description = '국내 공연 정보를 한눈에 확인할 수 있는 IH 입니다.',
+  title = '국내 공연 일정 & 예매 | 콘서트, 뮤지컬, 연극 정보 - IH',
+  description = '국내 인기 콘서트, 뮤지컬, 연극 공연 정보를 한눈에 확인하세요. 실시간 공연 일정, 예매 링크 제공.',
   image = `${IH_URL}/og-image.png`,
   url = IH_URL,
   type = 'website',
+  keywords = '공연 정보, 콘서트 일정, 뮤지컬 예매, 연극 추천',
 }: Props) {
   title = `IH | ${unescapeHtml(title)}`;
   description = unescapeHtml(description);
@@ -24,6 +26,7 @@ function HeadMeta({
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
