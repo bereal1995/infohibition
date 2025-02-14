@@ -38,6 +38,10 @@ function HeadMeta({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta
+        name="naver-site-verification"
+        content="fd6b2d720726892af5c703e64e36ddb8b74f12b3"
+      />
     </Head>
   );
 }
